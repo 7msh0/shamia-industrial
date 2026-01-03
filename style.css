@@ -235,6 +235,7 @@ nav {
   box-shadow: 0 8px 22px rgba(0, 0, 0, 0.06);
 }
 
+
 .product-image img {
   width: 100%;
   max-width: 260px;
@@ -265,6 +266,18 @@ nav {
   color: #444;
   line-height: 1.6;
 }
+
+#products-title {
+    font-size: 1.6rem;       /* moderate, professional size */
+    font-weight: 600;         /* slightly bold */
+    color: #111827;           /* dark slate gray */
+    text-align: center;
+    margin-bottom: 2rem;      /* space before products */
+    letter-spacing: normal;   /* remove extra spacing */
+    text-transform: none;     /* normal capitalization */
+}
+
+
 /*buttn for left and right*/
 /* Navigation buttons (prev / next) */
 .nav-btn {
@@ -332,8 +345,6 @@ nav {
     0 0 0 3px rgba(0, 180, 255, 0.35),
     0 8px 20px rgba(0, 0, 0, 0.15);
 }
-
-
 footer {
   padding: 2rem;
   text-align: center;
@@ -363,6 +374,7 @@ footer .social-icons svg {
   width: 28px;
   height: 28px;
 }
+
 
 
 @media (max-width: 600px) {
@@ -421,23 +433,7 @@ footer .social-icons svg {
 }
 
 
-/*section divider*/
-.section-divider {
-    width: 100%;
-    max-width: 900px;
-    height: 2px;
-    margin: 3rem auto;
-    background: linear-gradient(
-        to left,
-        rgba(0, 180, 255, 0),
-        rgba(0, 180, 255, 0.8),
-        rgba(0, 180, 255, 0)
-    );
-    box-shadow:
-        0 0 6px rgba(0, 180, 255, 0.6),
-        0 0 12px rgba(0, 180, 255, 0.4);
-    border-radius: 2px;
-}
+/*section divider removed*/
 
 
 .btn {
@@ -448,4 +444,13 @@ footer .social-icons svg {
   color: white;
   text-decoration: none;
   border-radius: 8px;
+}
+
+.home {
+  padding-top: 80px; /* already exists */
+  padding-bottom: 4rem;
+}
+
+.products {
+  padding: 6rem 1.5rem 3rem;
 }
