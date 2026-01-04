@@ -195,11 +195,18 @@ nav {
 }
 
 
+.home-content {
+  position: absolute; /* position relative to section */
+  bottom: 50px; /* distance from bottom */
+  width: 100%;
+  text-align: center; /* center horizontally */
+  z-index: 2;
+}
+
 .cta-btn {
   display: inline-block;
-  margin-top: 1.5rem;
   padding: 1rem 1.5rem;
-  background: linear-gradient(135deg,#2563eb,#0ea5e9);
+  background: linear-gradient(135deg, #2563eb, #0ea5e9);
   color: white;
   text-decoration: none;
   border-radius: 8px;
