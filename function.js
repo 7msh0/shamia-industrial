@@ -109,39 +109,73 @@ showcase.addEventListener("touchend", e => {
 renderProduct(currentIndex);
 
 /* Snowflake creation */
-function createSnowflake() {
-  const snowContainer =
-    document.getElementById("snow-container");
+const snowContainer = document.getElementById("snow-container");
 
+// Function to create a single snowflake
+function createSnowflake() {
   const snowflake = document.createElement("div");
   snowflake.classList.add("snowflake");
+
+  // Use Unicode snowflake character
   snowflake.textContent = "❄";
 
-  const size = Math.random() * 20 + 10; // 10–30px
+  // Random size and position
+  const size = Math.random() * 12 + 8; // 8px to 20px
   snowflake.style.fontSize = size + "px";
+  snowflake.style.left = Math.random() * window.innerWidth + "px";
 
-  snowflake.style.left =
-    Math.random() * window.innerWidth + "px";
+  // Random fall duration
+  const duration = Math.random() * 5 + 5; // 5s to 10s
+  snowflake.style.animationDuration = duration + "s";
 
-  snowflake.style.animationDuration =
-    (Math.random() * 3 + 3) + "s"; // 3–6s
-
+  // Add to container
   snowContainer.appendChild(snowflake);
 
-  setTimeout(() => {
+  // Remove after animation completes
+  snowflake.addEventListener("animationend", () => {
     snowflake.remove();
-  }, parseFloat(snowflake.style.animationDuration) * 1000);
+  });
 }
 
-// Trigger snow when the "عرض المنتجات" button is clicked
-const productsButton =
-  document.querySelector("#home .cta-btn");
+// Start snow after 3 seconds
+setTimeout(() => {
+  setInterval(createSnowflake, 550);
+}, 3000);
 
-productsButton.addEventListener("click", () => {
-  const interval =
-    setInterval(createSnowflake, 550);
+// Scroll-triggered animation
+// Fade in elements when scrolling into view
+const fadeItems = document.querySelectorAll('.fade-item');
 
-  setTimeout(() => {
-    clearInterval(interval);
-  }, 5000);
-});
+function checkFade() {
+  const triggerBottom = window.innerHeight * 0.9; // trigger a bit before fully in view
+  fadeItems.forEach(item => {
+    const itemTop = item.getBoundingClientRect().top;
+    if(itemTop < triggerBottom){
+      item.classList.add('show');
+    }
+  });
+}
+
+// Run on scroll and on page load
+window.addEventListener('scroll', checkFade);
+window.addEventListener('load', checkFade);
+
+
+// Fade in products section on scroll
+// Use Intersection Observer to trigger fade-in when section is in view
+const productsSection = document.getElementById('products');
+
+const observerOptions = {
+  threshold: 0.2 // trigger when 20% of section is visible
+};
+
+const observer = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('show');
+      observer.unobserve(entry.target); // stop observing after first reveal
+    }
+  });
+}, observerOptions);
+
+observer.observe(productsSection);
