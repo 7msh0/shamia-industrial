@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ثلاجة شميا ١٢ قدم - شميا</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="img/logo.jpg">
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-container">
+            <div class="preloader-logo">
+                <img src="img/logo-with-name.png" alt="شميا" class="logo-img">
+            </div>
+            <div class="preloader-spinner">
+                <div class="spinner"></div>
+            </div>
+            <p class="preloader-text">جاري تحميل الموقع...</p>
+        </div>
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" class="logo-link">
+                    <img src="img/logo-with-name.png" alt="شميا للثلاجات" class="logo-img">
+                </a>
+            </div>
+            
+            <div class="nav-menu" id="navMenu">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html" class="nav-link">الرئيسية</a></li>
+                    <li class="nav-item"><a href="index.html#products" class="nav-link">منتجاتنا</a></li>
+                    <li class="nav-item"><a href="index.html#about" class="nav-link">عن شميا</a></li>
+                    <li class="nav-item"><a href="index.html#repair" class="nav-link">خدمات الصيانة</a></li>
+                    <li class="nav-item"><a href="index.html#contact" class="nav-link">اتصل بنا</a></li>
+                </ul>
+            </div>
+            
+            <div class="nav-actions">
+                <a href="tel:+963111111111" class="nav-phone">
+                    <i class="fas fa-phone"></i>
+                    <span class="phone-text">اتصل الآن</span>
+                </a>
+                <button class="nav-toggle" id="navToggle" aria-label="قائمة التنقل">
+                    <span class="toggle-line"></span>
+                    <span class="toggle-line"></span>
+                    <span class="toggle-line"></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Product Detail Section -->
+    <section class="section product-page">
+        <div class="container">
+            <div class="form-header">
+                <div class="form-breadcrumb">
+                    <a href="index.html" class="breadcrumb-link">
+                        <i class="fas fa-home"></i>
+                        الرئيسية
+                    </a>
+                    <span class="breadcrumb-separator">/</span>
+                    <a href="index.html#products" class="breadcrumb-link">المنتجات</a>
+                    <span class="breadcrumb-separator">/</span>
+                    <span class="breadcrumb-current">ثلاجة شميا ١٢ قدم</span>
+                </div>
+                
+                <h1 class="form-title">
+                    <i class="fas fa-snowflake"></i>
+                    ثلاجة شميا <span class="highlight">١٢ قدم</span>
+                </h1>
+            </div>
+            
+            <div class="product-detail">
+                <div class="about-grid">
+                    <div class="about-image">
+                        <div class="image-wrapper">
+                            <img src="product/1.png" alt="ثلاجة شميا ١٢ قدم" id="productMainImage" class="product-img">
+                        </div>
+                    </div>
+                    
+                    <div class="about-content">
+                        <div class="section-header">
+                            <h2 class="section-title">ثلاجة شميا <span class="highlight">١٢ قدم</span></h2>
+                        </div>
+                        
+                        <p class="about-description">
+                            ثلاجة شميا ١٢ قدم بتصميم أنيق وحديث، توفر مساحة تخزين كبيرة مع استهلاك منخفض للطاقة. مزودة بتقنية التبريد الذكي التي تحافظ على الطعام طازجاً لفترة أطول.
+                        </p>
+                        <p class="about-description">
+                            تتميز بضاغط ساكن يقلل من استهلاك الطاقة ويوفر في فواتير الكهرباء، مع نظام تبريد موحد يحافظ على درجة حرارة مثالية في جميع أجزاء الثلاجة.
+                        </p>
+                        
+                        <div class="specs-list" id="productSpecs">
+                            <!-- Filled by JavaScript -->
+                        </div>
+                        
+                        <div class="product-actions" style="margin-top: var(--space-xl);">
+                            <a href="order.html?product=1" class="btn btn-primary btn-hero">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span>طلب هذا المنتج</span>
+                            </a>
+                            <a href="index.html#products" class="btn btn-secondary btn-hero">
+                                <i class="fas fa-arrow-right"></i>
+                                <span>العودة للمنتجات</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-features" style="margin-top: var(--space-2xl);">
+                <div class="section-header">
+                    <h2 class="section-title">مميزات <span class="highlight">إضافية</span></h2>
+                </div>
+                
+                <div class="about-features">
+                    <div class="about-feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>توفير الطاقة</h3>
+                            <p>تستهلك ثلاجة شميا ١٢ قدم طاقة أقل بنسبة 40% مقارنة بالثلاجات التقليدية، مما يوفر في فواتير الكهرباء على المدى الطويل.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="about-feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-snowflake"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>نظام التبريد</h3>
+                            <p>نظام التبريد الذكي يحافظ على درجة حرارة متساوية في جميع أجزاء الثلاجة، مما يطيل من عمر الأطعمة ويحافظ على نضارتها.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="about-feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>الضمان والصيانة</h3>
+                            <p>ضمان لمدة 10 سنوات على الضاغط، مع خدمة صيانة سريعة في جميع المحافظات السورية وقطع غيار أصلية متوفرة.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="about-feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>تصميم عصري</h3>
+                            <p>تصميم خارجي أنيق يناسب جميع المطابخ، مع أرفف قابلة للتعديل تتيح لك تنظيم مساحة التخزين حسب احتياجاتك.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo">
+                        <img src="img/logo-with-name.png" alt="شميا للثلاجات">
+                    </a>
+                    <p class="footer-description">
+                        ثلاجات شميا - صناعة سورية بجودة عالمية، نلتزم بتقديم أفضل المنتجات والخدمات لعملائنا الكرام منذ عام 1995.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3 class="footer-title">روابط سريعة</h3>
+                    <ul class="footer-nav">
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="index.html#products">منتجاتنا</a></li>
+                        <li><a href="index.html#about">عن شميا</a></li>
+                        <li><a href="index.html#repair">خدمات الصيانة</a></li>
+                        <li><a href="index.html#contact">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-newsletter">
+                    <h3 class="footer-title">اشترك في نشرتنا</h3>
+                    <p>كن أول من يعرف عن عروضنا الجديدة ومنتجاتنا الحديثة</p>
+                    <form class="newsletter-form">
+                        <div class="form-group">
+                            <input type="email" placeholder="بريدك الإلكتروني" required>
+                            <button type="submit" class="btn-subscribe">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>جميع الحقوق محفوظة &copy; شميا للثلاجات <span id="currentYear"></span></p>
+                <div class="payment-methods">
+                    <span>وسائل الدفع:</span>
+                    <i class="fas fa-money-bill-wave"></i>
+                    <i class="fas fa-credit-card"></i>
+                    <i class="fas fa-university"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/963111111111" class="whatsapp-float" target="_blank" aria-label="تواصل عبر واتساب">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="العودة إلى الأعلى">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
