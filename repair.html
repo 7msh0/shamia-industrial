@@ -1,30 +1,493 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>طلب صيانة</title>
-  <link rel="stylesheet" href="order.css">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>طلب صيانة ثلاجة - شميا</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="img/logo.jpg">
 </head>
 <body>
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-container">
+            <div class="preloader-logo">
+                <img src="img/logo-with-name.png" alt="شميا" class="logo-img">
+            </div>
+            <div class="preloader-spinner">
+                <div class="spinner"></div>
+            </div>
+            <p class="preloader-text">جاري تحميل الموقع...</p>
+        </div>
+    </div>
 
-<section class="order-container">
-  <a href="index.html" class="back-btn"> العودة </a>
-  <h2>طلب صيانة</h2>
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
 
-  <form id="repairForm">
-    <input type="text" name="name" placeholder="الاسم الكامل" required>
-    <input type="tel" name="phone" placeholder="رقم الهاتف" required>
-    <textarea name="notes" placeholder="وصف المشكلة"></textarea>
-    <div id="map"></div>
-    <input type="hidden" name="location" id="location">
-    <button type="submit" class="btn">خدمة فورية</button>
-  </form>
-</section>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" class="logo-link">
+                    <img src="img/logo-with-name.png" alt="شميا للثلاجات" class="logo-img">
+                </a>
+            </div>
+            
+            <div class="nav-menu" id="navMenu">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html" class="nav-link">الرئيسية</a></li>
+                    <li class="nav-item"><a href="index.html#products" class="nav-link">منتجاتنا</a></li>
+                    <li class="nav-item"><a href="index.html#about" class="nav-link">عن شميا</a></li>
+                    <li class="nav-item"><a href="repair.html" class="nav-link active">خدمات الصيانة</a></li>
+                    <li class="nav-item"><a href="index.html#contact" class="nav-link">اتصل بنا</a></li>
+                </ul>
+            </div>
+            
+            <div class="nav-actions">
+                <a href="tel:+963111111111" class="nav-phone">
+                    <i class="fas fa-phone"></i>
+                    <span class="phone-text">اتصل الآن</span>
+                </a>
+                <button class="nav-toggle" id="navToggle" aria-label="قائمة التنقل">
+                    <span class="toggle-line"></span>
+                    <span class="toggle-line"></span>
+                    <span class="toggle-line"></span>
+                </button>
+            </div>
+        </div>
+    </nav>
 
-<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-<script src="repair.js"></script>
+    <!-- Repair Form Section -->
+    <section class="section form-section repair-page">
+        <div class="container">
+            <div class="form-header">
+                <div class="form-breadcrumb">
+                    <a href="index.html" class="breadcrumb-link">
+                        <i class="fas fa-home"></i>
+                        الرئيسية
+                    </a>
+                    <span class="breadcrumb-separator">/</span>
+                    <a href="index.html#repair" class="breadcrumb-link">خدمات الصيانة</a>
+                    <span class="breadcrumb-separator">/</span>
+                    <span class="breadcrumb-current">طلب صيانة</span>
+                </div>
+                
+                <h1 class="form-title">
+                    <i class="fas fa-tools"></i>
+                    طلب خدمة صيانة <span class="highlight">شميا</span>
+                </h1>
+                <p class="form-subtitle">سيصل الفني إلى موقعك خلال 24 ساعة من تأكيد الطلب</p>
+            </div>
+            
+            <div class="repair-options">
+                <div class="repair-option-card emergency">
+                    <div class="option-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div class="option-content">
+                        <h3>صيانة عاجلة</h3>
+                        <p>للحالات الطارئة التي تحتاج تدخلاً فورياً</p>
+                        <ul>
+                            <li><i class="fas fa-check"></i> متاح على مدار الساعة</li>
+                            <li><i class="fas fa-check"></i> وصول الفني خلال 2-4 ساعات</li>
+                            <li><i class="fas fa-check"></i> أسعار واضحة ومحددة</li>
+                        </ul>
+                    </div>
+                    <div class="option-action">
+                        <a href="tel:+963111111111" class="btn btn-danger">
+                            <i class="fas fa-phone"></i>
+                            اتصل الآن للصيانة العاجلة
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="repair-option-card scheduled">
+                    <div class="option-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <div class="option-content">
+                        <h3>صيانة مجدولة</h3>
+                        <p>حجز موعد مسبق للصيانة الدورية أو غير الطارئة</p>
+                        <ul>
+                            <li><i class="fas fa-check"></i> اختر الوقت المناسب لك</li>
+                            <li><i class="fas fa-check"></i> الفحص الأولي مجاني</li>
+                            <li><i class="fas fa-check"></i> وصول الفني خلال 24 ساعة</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-container">
+                <div class="form-progress">
+                    <div class="progress-steps">
+                        <div class="progress-step active">
+                            <div class="step-number">1</div>
+                            <div class="step-label">معلومات العميل</div>
+                        </div>
+                        <div class="progress-step">
+                            <div class="step-number">2</div>
+                            <div class="step-label">تفاصيل الصيانة</div>
+                        </div>
+                        <div class="progress-step">
+                            <div class="step-number">3</div>
+                            <div class="step-label">تأكيد الحجز</div>
+                        </div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 33%"></div>
+                    </div>
+                </div>
+                
+                <form id="repairForm" class="form-content">
+                    <!-- Step 1: Customer Information -->
+                    <div class="form-step active" data-step="1">
+                        <div class="step-header">
+                            <h2><i class="fas fa-user"></i> معلومات العميل</h2>
+                            <p>الرجاء إدخال معلوماتك الشخصية</p>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="repairName">
+                                <i class="fas fa-user-circle"></i>
+                                الاسم الكامل *
+                            </label>
+                            <input type="text" id="repairName" name="name" class="form-control" required placeholder="أدخل اسمك الكامل">
+                        </div>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="repairPhone">
+                                    <i class="fas fa-phone"></i>
+                                    رقم الهاتف *
+                                </label>
+                                <input type="tel" id="repairPhone" name="phone" class="form-control" required placeholder="أدخل رقم هاتفك">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="repairEmail">
+                                    <i class="fas fa-envelope"></i>
+                                    البريد الإلكتروني
+                                </label>
+                                <input type="email" id="repairEmail" name="email" class="form-control" placeholder="example@email.com">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="repairCity">
+                                <i class="fas fa-city"></i>
+                                المحافظة *
+                            </label>
+                            <select id="repairCity" name="city" class="form-control" required>
+                                <option value="">اختر محافظتك</option>
+                                <!-- Filled by JavaScript -->
+                            </select>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-primary btn-next">
+                                التالي
+                                <i class="fas fa-arrow-left"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 2: Repair Details -->
+                    <div class="form-step" data-step="2">
+                        <div class="step-header">
+                            <h2><i class="fas fa-tools"></i> تفاصيل الصيانة</h2>
+                            <p>الرجاء إدخال تفاصيل المشكلة والثلاجة</p>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="fridgeModel">
+                                <i class="fas fa-snowflake"></i>
+                                موديل الثلاجة *
+                            </label>
+                            <select id="fridgeModel" name="model" class="form-control" required>
+                                <option value="">اختر موديل الثلاجة</option>
+                                <!-- Filled by JavaScript -->
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="fridgeSerial">
+                                <i class="fas fa-barcode"></i>
+                                الرقم التسلسلي (إن وجد)
+                            </label>
+                            <input type="text" id="fridgeSerial" name="serial" class="form-control" placeholder="الرقم الموجود على لوحة الثلاجة">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="problemType">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                نوع المشكلة *
+                            </label>
+                            <select id="problemType" name="problemType" class="form-control" required>
+                                <option value="">اختر نوع المشكلة</option>
+                                <option value="عدم التبريد">عدم التبريد</option>
+                                <option value="ضجيج عالي">ضجيج عالي</option>
+                                <option value="تسريب ماء">تسريب ماء</option>
+                                <option value="مشكلة كهربائية">مشكلة كهربائية</option>
+                                <option value="مشكلة في الباب">مشكلة في الباب</option>
+                                <option value="صيانة دورية">صيانة دورية</option>
+                                <option value="أخرى">أخرى</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="problemDetails">
+                                <i class="fas fa-clipboard-list"></i>
+                                تفاصيل المشكلة *
+                            </label>
+                            <textarea id="problemDetails" name="problemDetails" class="form-control" rows="4" required placeholder="صف المشكلة بالتفصيل..."></textarea>
+                            <div class="form-hint">اذكر جميع التفاصيل المهمة لتسريع عملية الصيانة</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="preferredTime">
+                                <i class="fas fa-clock"></i>
+                                الوقت المفضل للزيارة *
+                            </label>
+                            <select id="preferredTime" name="preferredTime" class="form-control" required>
+                                <option value="">اختر الوقت المناسب</option>
+                                <option value="8:00 - 10:00">8:00 - 10:00 صباحاً</option>
+                                <option value="10:00 - 12:00">10:00 - 12:00 ظهراً</option>
+                                <option value="12:00 - 14:00">12:00 - 2:00 بعد الظهر</option>
+                                <option value="14:00 - 16:00">2:00 - 4:00 عصراً</option>
+                                <option value="16:00 - 18:00">4:00 - 6:00 مساءً</option>
+                                <option value="لا يهم">لا يهم</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-secondary btn-prev">
+                                <i class="fas fa-arrow-right"></i>
+                                السابق
+                            </button>
+                            <button type="button" class="btn btn-primary btn-next">
+                                التالي
+                                <i class="fas fa-arrow-left"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 3: Location & Confirmation -->
+                    <div class="form-step" data-step="3">
+                        <div class="step-header">
+                            <h2><i class="fas fa-map-marked-alt"></i> الموقع والتأكيد</h2>
+                            <p>حدد موقعك وراجع تفاصيل الطلب</p>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="repairAddress">
+                                <i class="fas fa-map-pin"></i>
+                                العنوان التفصيلي *
+                            </label>
+                            <textarea id="repairAddress" name="address" class="form-control" rows="3" required placeholder="شارع، بناء، طابق، شقة..."></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>
+                                <i class="fas fa-map"></i>
+                                حدد موقعك على الخريطة *
+                            </label>
+                            <div class="map-instructions">
+                                <i class="fas fa-info-circle"></i>
+                                <p>اضغط على الخريطة لتحديد موقعك بدقة</p>
+                            </div>
+                            <div id="repairMap" class="repair-map"></div>
+                            <div class="map-coordinates">
+                                <div class="coordinate-group">
+                                    <label>خط العرض:</label>
+                                    <input type="text" id="repairLat" name="latitude" readonly class="coordinate-input">
+                                </div>
+                                <div class="coordinate-group">
+                                    <label>خط الطول:</label>
+                                    <input type="text" id="repairLng" name="longitude" readonly class="coordinate-input">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="repair-summary">
+                            <div class="summary-header">
+                                <h3>ملخص طلب الصيانة</h3>
+                            </div>
+                            
+                            <div class="summary-content">
+                                <div class="summary-item">
+                                    <span class="summary-label">الاسم:</span>
+                                    <span class="summary-value" id="repairSummaryName">-</span>
+                                </div>
+                                <div class="summary-item">
+                                    <span class="summary-label">الهاتف:</span>
+                                    <span class="summary-value" id="repairSummaryPhone">-</span>
+                                </div>
+                                <div class="summary-item">
+                                    <span class="summary-label">المحافظة:</span>
+                                    <span class="summary-value" id="repairSummaryCity">-</span>
+                                </div>
+                                <div class="summary-item">
+                                    <span class="summary-label">الموديل:</span>
+                                    <span class="summary-value" id="repairSummaryModel">-</span>
+                                </div>
+                                <div class="summary-item">
+                                    <span class="summary-label">نوع المشكلة:</span>
+                                    <span class="summary-value" id="repairSummaryProblem">-</span>
+                                </div>
+                                <div class="summary-item">
+                                    <span class="summary-label">الوقت المفضل:</span>
+                                    <span class="summary-value" id="repairSummaryTime">-</span>
+                                </div>
+                            </div>
+                            
+                            <div class="summary-footer">
+                                <div class="terms-agreement">
+                                    <input type="checkbox" id="repairTerms" name="terms" required>
+                                    <label for="repairTerms">
+                                        أوافق على
+                                        <a href="#" class="terms-link">شروط الصيانة</a>
+                                        و
+                                        <a href="#" class="terms-link">سياسة الأسعار</a>
+                                    </label>
+                                </div>
+                                
+                                <div class="repair-note">
+                                    <i class="fas fa-info-circle"></i>
+                                    <p>سيتم التواصل معك خلال ساعتين لتأكيد موعد الصيانة</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-secondary btn-prev">
+                                <i class="fas fa-arrow-right"></i>
+                                السابق
+                            </button>
+                            <button type="submit" class="btn btn-primary btn-submit">
+                                <i class="fas fa-calendar-check"></i>
+                                تأكيد حجز الصيانة
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                
+                <div class="form-success" id="repairSuccessMessage" style="display: none;">
+                    <div class="success-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3>تم حجز موعد الصيانة بنجاح!</h3>
+                    <p>تم استلام طلبك وسنتواصل معك خلال ساعتين لتأكيد الموعد</p>
+                    <div class="success-actions">
+                        <a href="index.html" class="btn btn-primary">
+                            <i class="fas fa-home"></i>
+                            العودة للرئيسية
+                        </a>
+                        <a href="#" id="repairWhatsappBtn" class="btn btn-success" target="_blank">
+                            <i class="fab fa-whatsapp"></i>
+                            إرسال عبر واتساب
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="repair-info">
+                <h3><i class="fas fa-question-circle"></i> معلومات عن خدمات الصيانة</h3>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <i class="fas fa-wrench"></i>
+                        <h4>قطع الغيار</h4>
+                        <p>جميع قطع الغيار أصلية وضمن الضمان</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-money-bill-wave"></i>
+                        <h4>الأسعار</h4>
+                        <p>أسعار الصيانة محددة مسبقاً ولا توجد تكاليف مخفية</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-user-shield"></i>
+                        <h4>فنيون معتمدون</h4>
+                        <p>جميع الفنيين معتمدون ولديهم خبرة طويلة</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-clock"></i>
+                        <h4>سرعة الاستجابة</h4>
+                        <p>يصل الفني خلال 24 ساعة من تأكيد الموعد</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo">
+                        <img src="img/logo-with-name.png" alt="شميا للثلاجات">
+                    </a>
+                    <p class="footer-description">
+                        ثلاجات شميا - صناعة سورية بجودة عالمية، نلتزم بتقديم أفضل المنتجات والخدمات لعملائنا الكرام منذ عام 1995.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3 class="footer-title">روابط سريعة</h3>
+                    <ul class="footer-nav">
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="index.html#products">منتجاتنا</a></li>
+                        <li><a href="index.html#about">عن شميا</a></li>
+                        <li><a href="repair.html">خدمات الصيانة</a></li>
+                        <li><a href="index.html#contact">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-newsletter">
+                    <h3 class="footer-title">اشترك في نشرتنا</h3>
+                    <p>كن أول من يعرف عن عروضنا الجديدة ومنتجاتنا الحديثة</p>
+                    <form class="newsletter-form">
+                        <div class="form-group">
+                            <input type="email" placeholder="بريدك الإلكتروني" required>
+                            <button type="submit" class="btn-subscribe">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>جميع الحقوق محفوظة &copy; شميا للثلاجات <span id="currentYear"></span></p>
+                <div class="payment-methods">
+                    <span>وسائل الدفع:</span>
+                    <i class="fas fa-money-bill-wave"></i>
+                    <i class="fas fa-credit-card"></i>
+                    <i class="fas fa-university"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/963111111111" class="whatsapp-float" target="_blank" aria-label="تواصل عبر واتساب">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="العودة إلى الأعلى">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>

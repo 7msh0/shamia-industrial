@@ -1,57 +1,460 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>طلب حجز</title>
-
-  <link rel="stylesheet" href="order.css">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>طلب شراء ثلاجة - شميا</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="img/logo.jpg">
 </head>
 <body>
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-container">
+            <div class="preloader-logo">
+                <img src="img/logo-with-name.png" alt="شميا" class="logo-img">
+            </div>
+            <div class="preloader-spinner">
+                <div class="spinner"></div>
+            </div>
+            <p class="preloader-text">جاري تحميل الموقع...</p>
+        </div>
+    </div>
 
-<section class="order-container">
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
 
-  <!-- زر الرجوع -->
-  <a href="index.html" class="back-btn"> العودة </a>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" class="logo-link">
+                    <img src="img/logo-with-name.png" alt="شميا للثلاجات" class="logo-img">
+                </a>
+            </div>
+            
+            <div class="nav-menu" id="navMenu">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html" class="nav-link">الرئيسية</a></li>
+                    <li class="nav-item"><a href="index.html#products" class="nav-link">منتجاتنا</a></li>
+                    <li class="nav-item"><a href="index.html#about" class="nav-link">عن شميا</a></li>
+                    <li class="nav-item"><a href="index.html#repair" class="nav-link">خدمات الصيانة</a></li>
+                    <li class="nav-item"><a href="index.html#contact" class="nav-link">اتصل بنا</a></li>
+                </ul>
+            </div>
+            
+            <div class="nav-actions">
+                <a href="tel:+963111111111" class="nav-phone">
+                    <i class="fas fa-phone"></i>
+                    <span class="phone-text">اتصل الآن</span>
+                </a>
+                <button class="nav-toggle" id="navToggle" aria-label="قائمة التنقل">
+                    <span class="toggle-line"></span>
+                    <span class="toggle-line"></span>
+                    <span class="toggle-line"></span>
+                </button>
+            </div>
+        </div>
+    </nav>
 
-  <h2>طلب حجز براد</h2>
+    <!-- Order Form Section -->
+    <section class="section form-section order-page">
+        <div class="container">
+            <div class="form-header">
+                <div class="form-breadcrumb">
+                    <a href="index.html" class="breadcrumb-link">
+                        <i class="fas fa-home"></i>
+                        الرئيسية
+                    </a>
+                    <span class="breadcrumb-separator">/</span>
+                    <span class="breadcrumb-current">طلب شراء</span>
+                </div>
+                
+                <h1 class="form-title">
+                    <i class="fas fa-shopping-cart"></i>
+                    طلب شراء ثلاجة <span class="highlight">شميا</span>
+                </h1>
+                <p class="form-subtitle">املأ النموذج التالي وسنتصل بك لتأكيد الطلب خلال 24 ساعة</p>
+            </div>
+            
+            <div class="form-container">
+                <div class="form-progress">
+                    <div class="progress-steps">
+                        <div class="progress-step active">
+                            <div class="step-number">1</div>
+                            <div class="step-label">معلومات العميل</div>
+                        </div>
+                        <div class="progress-step">
+                            <div class="step-number">2</div>
+                            <div class="step-label">تفاصيل المنتج</div>
+                        </div>
+                        <div class="progress-step">
+                            <div class="step-number">3</div>
+                            <div class="step-label">تأكيد الطلب</div>
+                        </div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 33%"></div>
+                    </div>
+                </div>
+                
+                <form id="orderForm" class="form-content">
+                    <!-- Step 1: Customer Information -->
+                    <div class="form-step active" data-step="1">
+                        <div class="step-header">
+                            <h2><i class="fas fa-user"></i> معلومات العميل</h2>
+                            <p>الرجاء إدخال معلوماتك الشخصية</p>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="orderName">
+                                <i class="fas fa-user-circle"></i>
+                                الاسم الكامل *
+                            </label>
+                            <input type="text" id="orderName" name="name" class="form-control" required placeholder="أدخل اسمك الكامل">
+                            <div class="form-hint">مثال: أحمد محمد</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="orderPhone">
+                                <i class="fas fa-phone"></i>
+                                رقم الهاتف *
+                            </label>
+                            <input type="tel" id="orderPhone" name="phone" class="form-control" required placeholder="أدخل رقم هاتفك">
+                            <div class="form-hint">مثال: 0991234567</div>
+                        </div>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="orderCity">
+                                    <i class="fas fa-city"></i>
+                                    المحافظة *
+                                </label>
+                                <select id="orderCity" name="city" class="form-control" required>
+                                    <option value="">اختر محافظتك</option>
+                                    <!-- Filled by JavaScript -->
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="orderDistrict">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    المنطقة *
+                                </label>
+                                <input type="text" id="orderDistrict" name="district" class="form-control" required placeholder="اسم منطقتك">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="orderAddress">
+                                <i class="fas fa-map-pin"></i>
+                                العنوان التفصيلي *
+                            </label>
+                            <textarea id="orderAddress" name="address" class="form-control" rows="3" required placeholder="شارع، بناء، طابق، شقة"></textarea>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-secondary btn-next">
+                                التالي
+                                <i class="fas fa-arrow-left"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 2: Product Details -->
+                    <div class="form-step" data-step="2">
+                        <div class="step-header">
+                            <h2><i class="fas fa-box"></i> تفاصيل المنتج</h2>
+                            <p>اختر المنتج والمواصفات المطلوبة</p>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="orderProduct">
+                                <i class="fas fa-snowflake"></i>
+                                نوع الثلاجة *
+                            </label>
+                            <select id="orderProduct" name="product" class="form-control" required>
+                                <option value="">اختر نوع الثلاجة</option>
+                                <!-- Filled by JavaScript -->
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>
+                                <i class="fas fa-cogs"></i>
+                                نوع الأنابيب *
+                            </label>
+                            <div class="radio-group">
+                                <div class="radio-option">
+                                    <input type="radio" id="tubeCopper" name="tubeType" value="نحاس" required>
+                                    <label for="tubeCopper">
+                                        <span class="radio-icon">
+                                            <i class="fas fa-check-circle"></i>
+                                        </span>
+                                        <span class="radio-content">
+                                            <strong>نحاس</strong>
+                                            <small>أكثر متانة وعمر أطول</small>
+                                        </span>
+                                        <span class="radio-badge">+$50</span>
+                                    </label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="tubeAluminum" name="tubeType" value="ألمنيوم" required>
+                                    <label for="tubeAluminum">
+                                        <span class="radio-icon">
+                                            <i class="fas fa-check-circle"></i>
+                                        </span>
+                                        <span class="radio-content">
+                                            <strong>ألمنيوم</strong>
+                                            <small>أخف وزناً وأقل سعراً</small>
+                                        </span>
+                                        <span class="radio-badge">قياسي</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>
+                                <i class="fas fa-map-marked-alt"></i>
+                                حدد موقعك على الخريطة *
+                            </label>
+                            <div class="map-instructions">
+                                <i class="fas fa-info-circle"></i>
+                                <p>اضغط على الخريطة لتحديد موقعك بدقة</p>
+                            </div>
+                            <div id="orderMap" class="order-map"></div>
+                            <div class="map-coordinates">
+                                <div class="coordinate-group">
+                                    <label>خط العرض:</label>
+                                    <input type="text" id="orderLat" name="latitude" readonly class="coordinate-input">
+                                </div>
+                                <div class="coordinate-group">
+                                    <label>خط الطول:</label>
+                                    <input type="text" id="orderLng" name="longitude" readonly class="coordinate-input">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="orderNotes">
+                                <i class="fas fa-sticky-note"></i>
+                                ملاحظات إضافية
+                            </label>
+                            <textarea id="orderNotes" name="notes" class="form-control" rows="4" placeholder="ملاحظات إضافية أو طلبات خاصة..."></textarea>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-secondary btn-prev">
+                                <i class="fas fa-arrow-right"></i>
+                                السابق
+                            </button>
+                            <button type="button" class="btn btn-primary btn-next">
+                                التالي
+                                <i class="fas fa-arrow-left"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 3: Order Confirmation -->
+                    <div class="form-step" data-step="3">
+                        <div class="step-header">
+                            <h2><i class="fas fa-check-circle"></i> تأكيد الطلب</h2>
+                            <p>راجع معلومات الطلب قبل الإرسال</p>
+                        </div>
+                        
+                        <div class="order-summary">
+                            <div class="summary-header">
+                                <h3>ملخص الطلب</h3>
+                                <button type="button" class="btn-edit" id="editOrderBtn">
+                                    <i class="fas fa-edit"></i>
+                                    تعديل
+                                </button>
+                            </div>
+                            
+                            <div class="summary-content">
+                                <div class="summary-item">
+                                    <span class="summary-label">الاسم:</span>
+                                    <span class="summary-value" id="summaryName">-</span>
+                                </div>
+                                <div class="summary-item">
+                                    <span class="summary-label">الهاتف:</span>
+                                    <span class="summary-value" id="summaryPhone">-</span>
+                                </div>
+                                <div class="summary-item">
+                                    <span class="summary-label">المحافظة:</span>
+                                    <span class="summary-value" id="summaryCity">-</span>
+                                </div>
+                                <div class="summary-item">
+                                    <span class="summary-label">المنطقة:</span>
+                                    <span class="summary-value" id="summaryDistrict">-</span>
+                                </div>
+                                <div class="summary-item">
+                                    <span class="summary-label">المنتج:</span>
+                                    <span class="summary-value" id="summaryProduct">-</span>
+                                </div>
+                                <div class="summary-item">
+                                    <span class="summary-label">نوع الأنابيب:</span>
+                                    <span class="summary-value" id="summaryTube">-</span>
+                                </div>
+                                <div class="summary-item">
+                                    <span class="summary-label">الملاحظات:</span>
+                                    <span class="summary-value" id="summaryNotes">لا توجد ملاحظات</span>
+                                </div>
+                            </div>
+                            
+                            <div class="summary-footer">
+                                <div class="terms-agreement">
+                                    <input type="checkbox" id="orderTerms" name="terms" required>
+                                    <label for="orderTerms">
+                                        أوافق على
+                                        <a href="#" class="terms-link">الشروط والأحكام</a>
+                                        و
+                                        <a href="#" class="terms-link">سياسة الخصوصية</a>
+                                    </label>
+                                </div>
+                                
+                                <div class="order-note">
+                                    <i class="fas fa-info-circle"></i>
+                                    <p>سيتم التواصل معك خلال 24 ساعة لتأكيد الطلب والتفاصيل النهائية</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-secondary btn-prev">
+                                <i class="fas fa-arrow-right"></i>
+                                السابق
+                            </button>
+                            <button type="submit" class="btn btn-primary btn-submit">
+                                <i class="fas fa-paper-plane"></i>
+                                إرسال الطلب
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                
+                <div class="form-success" id="successMessage" style="display: none;">
+                    <div class="success-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3>تم إرسال طلبك بنجاح!</h3>
+                    <p>تم حفظ طلبك وسنتواصل معك خلال 24 ساعة لتأكيد التفاصيل</p>
+                    <div class="success-actions">
+                        <a href="index.html" class="btn btn-primary">
+                            <i class="fas fa-home"></i>
+                            العودة للرئيسية
+                        </a>
+                        <a href="#" id="whatsappBtn" class="btn btn-success" target="_blank">
+                            <i class="fab fa-whatsapp"></i>
+                            إرسال عبر واتساب
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-info">
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="info-content">
+                        <h4>ضمان 10 سنوات</h4>
+                        <p>ضمان شامل على الضاغط لمدة 10 سنوات</p>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <div class="info-content">
+                        <h4>توصيل مجاني</h4>
+                        <p>توصيل مجاني داخل المحافظة</p>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <div class="info-content">
+                        <h4>دعم فني</h4>
+                        <p>دعم فني على مدار الساعة</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <form id="orderForm">
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo">
+                        <img src="img/logo-with-name.png" alt="شميا للثلاجات">
+                    </a>
+                    <p class="footer-description">
+                        ثلاجات شميا - صناعة سورية بجودة عالمية، نلتزم بتقديم أفضل المنتجات والخدمات لعملائنا الكرام منذ عام 1995.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3 class="footer-title">روابط سريعة</h3>
+                    <ul class="footer-nav">
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="index.html#products">منتجاتنا</a></li>
+                        <li><a href="index.html#about">عن شميا</a></li>
+                        <li><a href="index.html#repair">خدمات الصيانة</a></li>
+                        <li><a href="index.html#contact">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-newsletter">
+                    <h3 class="footer-title">اشترك في نشرتنا</h3>
+                    <p>كن أول من يعرف عن عروضنا الجديدة ومنتجاتنا الحديثة</p>
+                    <form class="newsletter-form">
+                        <div class="form-group">
+                            <input type="email" placeholder="بريدك الإلكتروني" required>
+                            <button type="submit" class="btn-subscribe">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>جميع الحقوق محفوظة &copy; شميا للثلاجات <span id="currentYear"></span></p>
+                <div class="payment-methods">
+                    <span>وسائل الدفع:</span>
+                    <i class="fas fa-money-bill-wave"></i>
+                    <i class="fas fa-credit-card"></i>
+                    <i class="fas fa-university"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
 
-    <input type="text" name="name" placeholder="الاسم الكامل" required>
-    <input type="email" name="email" placeholder="البريد الإلكتروني" >
-    <input type="tel" name="phone" placeholder="رقم الهاتف" required>
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/963111111111" class="whatsapp-float" target="_blank" aria-label="تواصل عبر واتساب">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
-    <select name="city" required>
-      <option value="">اختر المدينة</option>
-      <option>دمشق</option>
-      <option>حلب</option>
-      <option>اللاذقية</option>
-      <option>حمص</option>
-      <option>حماة</option>
-      <option>طرطوس</option>
-    </select>
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="العودة إلى الأعلى">
+        <i class="fas fa-chevron-up"></i>
+    </button>
 
-    <input type="text" name="model" placeholder="موديل البراد" required>
-
-    <select name="material" required>
-      <option value="">نوع الأنابيب</option>
-      <option>برادات بأنابيب نحاس</option>
-      <option>برادات ألمنيوم</option>
-    </select>
-
-    <textarea name="notes" placeholder="معلومات إضافية"></textarea>
-
-    <div id="map"></div>
-    <input type="hidden" name="location" id="location">
-
-    <button type="submit" class="btn">إرسال الطلب عبر WhatsApp</button>
-  </form>
-</section>
-
-<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-<script src="order.js"></script>
-
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
