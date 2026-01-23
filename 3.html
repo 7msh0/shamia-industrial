@@ -3,19 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ثلاجة شميا ١٢ قدم - شميا</title>
+    <title>ثلاجة شامية 80 سم 5 رفوف - شامية</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="img/logo.jpg">
+    <style>
+        .product-page {
+            padding-top: 120px;
+        }
+        
+        @media (max-width: 768px) {
+            .product-page {
+                padding-top: 100px;
+            }
+        }
+        
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space);
+            margin-top: var(--space-xl);
+        }
+        
+        .spec-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: var(--space);
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: all var(--transition);
+        }
+        
+        .spec-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .spec-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--space);
+            color: var(--white);
+            font-size: 1.5rem;
+        }
+        
+        .spec-card h3 {
+            font-size: 1.125rem;
+            margin-bottom: var(--space-sm);
+            color: var(--dark);
+        }
+        
+        .spec-card p {
+            color: var(--dark-gray);
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+        
+        .specs-list {
+            list-style: none;
+            margin: var(--space-xl) 0;
+        }
+        
+        .spec-item {
+            padding: var(--space-sm) 0;
+            border-bottom: 1px solid var(--light-gray);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .spec-item:last-child {
+            border-bottom: none;
+        }
+        
+        .spec-label {
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .spec-value {
+            color: var(--primary);
+            font-weight: 500;
+        }
+    </style>
 </head>
 <body>
     <!-- Preloader -->
     <div class="preloader" id="preloader">
         <div class="preloader-container">
             <div class="preloader-logo">
-                <img src="img/logo-with-name.png" alt="شميا" class="logo-img">
+                <img src="img/logo-with-name.png" alt="شامية" class="logo-img">
             </div>
             <div class="preloader-spinner">
                 <div class="spinner"></div>
@@ -32,7 +115,7 @@
         <div class="container">
             <div class="nav-brand">
                 <a href="index.html" class="logo-link">
-                    <img src="img/logo-with-name.png" alt="شميا للثلاجات" class="logo-img">
+                    <img src="img/logo-with-name.png" alt="شامية للثلاجات" class="logo-img">
                 </a>
             </div>
             
@@ -40,14 +123,14 @@
                 <ul class="nav-list">
                     <li class="nav-item"><a href="index.html" class="nav-link">الرئيسية</a></li>
                     <li class="nav-item"><a href="index.html#products" class="nav-link">منتجاتنا</a></li>
-                    <li class="nav-item"><a href="index.html#about" class="nav-link">عن شميا</a></li>
+                    <li class="nav-item"><a href="index.html#about" class="nav-link">عن شامية</a></li>
                     <li class="nav-item"><a href="index.html#repair" class="nav-link">خدمات الصيانة</a></li>
                     <li class="nav-item"><a href="index.html#contact" class="nav-link">اتصل بنا</a></li>
                 </ul>
             </div>
             
             <div class="nav-actions">
-                <a href="tel:+963111111111" class="nav-phone">
+                <a href="tel:+963936604658" class="nav-phone">
                     <i class="fas fa-phone"></i>
                     <span class="phone-text">اتصل الآن</span>
                 </a>
@@ -72,12 +155,12 @@
                     <span class="breadcrumb-separator">/</span>
                     <a href="index.html#products" class="breadcrumb-link">المنتجات</a>
                     <span class="breadcrumb-separator">/</span>
-                    <span class="breadcrumb-current">ثلاجة شميا ١٢ قدم</span>
+                    <span class="breadcrumb-current">ثلاجة شامية 80 سم 5 رفوف</span>
                 </div>
                 
                 <h1 class="form-title">
                     <i class="fas fa-snowflake"></i>
-                    ثلاجة شميا <span class="highlight">١٢ قدم</span>
+                    ثلاجة شامية <span class="highlight">80 سم 5 رفوف</span>
                 </h1>
             </div>
             
@@ -85,28 +168,31 @@
                 <div class="about-grid">
                     <div class="about-image">
                         <div class="image-wrapper">
-                            <img src="product/1.png" alt="ثلاجة شميا ١٢ قدم" id="productMainImage" class="product-img">
+                            <img src="product/3.png" alt="ثلاجة شامية 80 سم 5 رفوف" id="productMainImage" class="product-img" loading="lazy">
                         </div>
                     </div>
                     
                     <div class="about-content">
                         <div class="section-header">
-                            <h2 class="section-title">ثلاجة شميا <span class="highlight">١٢ قدم</span></h2>
+                            <h2 class="section-title">ثلاجة شامية <span class="highlight">80 سم 5 رفوف</span></h2>
                         </div>
                         
                         <p class="about-description">
-                            ثلاجة شميا ١٢ قدم بتصميم أنيق وحديث، توفر مساحة تخزين كبيرة مع استهلاك منخفض للطاقة. مزودة بتقنية التبريد الذكي التي تحافظ على الطعام طازجاً لفترة أطول.
+                            ثلاجة شامية 80 سم بتصميم أنيق وعصري، مزودة بـ 5 رفوف متعددة الاستخدامات توفر مرونة تنظيم مثالية. نظام التبريد الهجين المتطور يضمن توزيعاً متساوياً للبرودة في جميع أجزاء الثلاجة.
                         </p>
                         <p class="about-description">
-                            تتميز بضاغط ساكن يقلل من استهلاك الطاقة ويوفر في فواتير الكهرباء، مع نظام تبريد موحد يحافظ على درجة حرارة مثالية في جميع أجزاء الثلاجة.
+                            تعمل بضاغط إنفرتر ذكي يعدل سرعته تلقائياً وفقاً لاحتياجات التبريد، مما يوفر ما يصل إلى 45% من استهلاك الطاقة. المواسير النحاسية عالية الجودة بطول 22 متر وقطر 5/16 مع حماية إضافية طول 9 متر تضمن كفاءة تبريد استثنائية.
+                        </p>
+                        <p class="about-description">
+                            تصميم داخلي ذكي مع أرفف قابلة للتعديل، إضاءة LED موفرة للطاقة، وعزل حراري متقدم بسماكة 6 سم يحافظ على درجة الحرارة المثالية ويقلل من استهلاك الطاقة الإضافي.
                         </p>
                         
-                        <div class="specs-list" id="productSpecs">
-                            <!-- Filled by JavaScript -->
-                        </div>
+                        <ul class="specs-list" id="productSpecs">
+                            <!-- سيتم تعبئتها بواسطة JavaScript -->
+                        </ul>
                         
                         <div class="product-actions" style="margin-top: var(--space-xl);">
-                            <a href="order.html?product=1" class="btn btn-primary btn-hero">
+                            <a href="order.html?product=3" class="btn btn-primary btn-hero">
                                 <i class="fas fa-shopping-cart"></i>
                                 <span>طلب هذا المنتج</span>
                             </a>
@@ -121,48 +207,89 @@
             
             <div class="product-features" style="margin-top: var(--space-2xl);">
                 <div class="section-header">
-                    <h2 class="section-title">مميزات <span class="highlight">إضافية</span></h2>
+                    <h2 class="section-title">مميزات <span class="highlight">التصميم والتقنية</span></h2>
                 </div>
                 
                 <div class="about-features">
                     <div class="about-feature">
                         <div class="feature-icon">
-                            <i class="fas fa-leaf"></i>
+                            <i class="fas fa-boxes"></i>
                         </div>
                         <div class="feature-content">
-                            <h3>توفير الطاقة</h3>
-                            <p>تستهلك ثلاجة شميا ١٢ قدم طاقة أقل بنسبة 40% مقارنة بالثلاجات التقليدية، مما يوفر في فواتير الكهرباء على المدى الطويل.</p>
+                            <h3>سعة تخزين كبيرة</h3>
+                            <p>تصميم 80 سم مع 5 رفوف يوفر سعة تخزين استثنائية مناسبة للعائلات الكبيرة والاحتياجات المتعددة.</p>
                         </div>
                     </div>
                     
                     <div class="about-feature">
                         <div class="feature-icon">
-                            <i class="fas fa-snowflake"></i>
+                            <i class="fas fa-sliders-h"></i>
                         </div>
                         <div class="feature-content">
-                            <h3>نظام التبريد</h3>
-                            <p>نظام التبريد الذكي يحافظ على درجة حرارة متساوية في جميع أجزاء الثلاجة، مما يطيل من عمر الأطعمة ويحافظ على نضارتها.</p>
+                            <h3>أرفف قابلة للتعديل</h3>
+                            <p>أرفف قابلة للتعديل والتشكيل حسب الاحتياج، تتيح تنظيم المساحة الداخلية بشكل مثالي.</p>
                         </div>
                     </div>
                     
                     <div class="about-feature">
                         <div class="feature-icon">
-                            <i class="fas fa-shield-alt"></i>
+                            <i class="fas fa-lightbulb"></i>
                         </div>
                         <div class="feature-content">
-                            <h3>الضمان والصيانة</h3>
-                            <p>ضمان لمدة 10 سنوات على الضاغط، مع خدمة صيانة سريعة في جميع المحافظات السورية وقطع غيار أصلية متوفرة.</p>
+                            <h3>إضاءة LED متطورة</h3>
+                            <p>إضاءة LED موفرة للطاقة تضيء جميع أجزاء الثلاجة بوضوح مع استهلاك طاقة منخفض.</p>
                         </div>
                     </div>
                     
                     <div class="about-feature">
                         <div class="feature-icon">
-                            <i class="fas fa-cogs"></i>
+                            <i class="fas fa-wind"></i>
                         </div>
                         <div class="feature-content">
-                            <h3>تصميم عصري</h3>
-                            <p>تصميم خارجي أنيق يناسب جميع المطابخ، مع أرفف قابلة للتعديل تتيح لك تنظيم مساحة التخزين حسب احتياجاتك.</p>
+                            <h3>تبريد هوائي ذكي</h3>
+                            <p>نظام تبريد هوائي يوزع الهواء البارد بشكل متساوٍ، يمنع تكون الصقيع ويحافظ على نضارة الطعام.</p>
                         </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- قسم المواصفات الفنية -->
+            <div class="technical-specs" style="margin-top: var(--space-2xl);">
+                <div class="section-header">
+                    <h2 class="section-title">المواصفات <span class="highlight">الفنية</span></h2>
+                </div>
+                
+                <div class="specs-grid">
+                    <div class="spec-card">
+                        <div class="spec-icon">
+                            <i class="fas fa-ruler-combined"></i>
+                        </div>
+                        <h3>التصميم</h3>
+                        <p>عرض 80 سم<br>5 رفوف قابلة للتعديل<br>تصميم داخلي ذكي</p>
+                    </div>
+                    
+                    <div class="spec-card">
+                        <div class="spec-icon">
+                            <i class="fas fa-fan"></i>
+                        </div>
+                        <h3>نظام التبريد</h3>
+                        <p>تبريد هجين مع مبخرة<br>تبريد هوائي ذكي<br>منع تكوين الصقيع</p>
+                    </div>
+                    
+                    <div class="spec-card">
+                        <div class="spec-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>الكفاءة</h3>
+                        <p>توفير طاقة حتى 45%<br>ضاغط إنفرتر ذكي<br>إضاءة LED موفرة</p>
+                    </div>
+                    
+                    <div class="spec-card">
+                        <div class="spec-icon">
+                            <i class="fas fa-temperature-low"></i>
+                        </div>
+                        <h3>التحكم الحراري</h3>
+                        <p>عزل حراري 6 سم<br>تحكم رقمي في الحرارة<br>حفاظ على النضارة</p>
                     </div>
                 </div>
             </div>
@@ -175,16 +302,15 @@
             <div class="footer-content">
                 <div class="footer-brand">
                     <a href="index.html" class="footer-logo">
-                        <img src="img/logo-with-name.png" alt="شميا للثلاجات">
+                        <img src="img/logo-with-name.png" alt="شامية للثلاجات">
                     </a>
                     <p class="footer-description">
-                        ثلاجات شميا - صناعة سورية بجودة عالمية، نلتزم بتقديم أفضل المنتجات والخدمات لعملائنا الكرام منذ عام 1995.
+                        ثلاجات شامية - صناعة سورية بجودة عالمية، نلتزم بتقديم أفضل المنتجات والخدمات لعملائنا الكرام.
                     </p>
                     <div class="footer-social">
                         <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
                         <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                        <a href="https://api.whatsapp.com/send?phone=963936604658" class="social-link" target="_blank"><i class="fab fa-whatsapp"></i></a>                        
                     </div>
                 </div>
                 
@@ -193,7 +319,7 @@
                     <ul class="footer-nav">
                         <li><a href="index.html">الرئيسية</a></li>
                         <li><a href="index.html#products">منتجاتنا</a></li>
-                        <li><a href="index.html#about">عن شميا</a></li>
+                        <li><a href="index.html#about">عن شامية</a></li>
                         <li><a href="index.html#repair">خدمات الصيانة</a></li>
                         <li><a href="index.html#contact">اتصل بنا</a></li>
                     </ul>
@@ -214,7 +340,7 @@
             </div>
             
             <div class="footer-bottom">
-                <p>جميع الحقوق محفوظة &copy; شميا للثلاجات <span id="currentYear"></span></p>
+                <p>جميع الحقوق محفوظة &copy; شامية للثلاجات <span id="currentYear"></span></p>
                 <div class="payment-methods">
                     <span>وسائل الدفع:</span>
                     <i class="fas fa-money-bill-wave"></i>
@@ -226,7 +352,7 @@
     </footer>
 
     <!-- WhatsApp Float Button -->
-    <a href="https://wa.me/963111111111" class="whatsapp-float" target="_blank" aria-label="تواصل عبر واتساب">
+    <a href="https://wa.me/+963936604658" class="whatsapp-float" target="_blank" aria-label="تواصل عبر واتساب">
         <i class="fab fa-whatsapp"></i>
     </a>
 
@@ -235,7 +361,6 @@
         <i class="fas fa-chevron-up"></i>
     </button>
 
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
