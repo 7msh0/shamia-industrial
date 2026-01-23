@@ -3,95 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ثلاجة شامية 65 سم 5 رفوف - شامية</title>
+    <title>ثلاجة شامية 65 سبور - شامية</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="img/logo.jpg">
-    <style>
-        .product-page {
-            padding-top: 120px;
-        }
-        
-        @media (max-width: 768px) {
-            .product-page {
-                padding-top: 100px;
-            }
-        }
-        
-        .specs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: var(--space);
-            margin-top: var(--space-xl);
-        }
-        
-        .spec-card {
-            background: var(--white);
-            border-radius: var(--radius);
-            padding: var(--space);
-            box-shadow: var(--shadow);
-            text-align: center;
-            transition: all var(--transition);
-        }
-        
-        .spec-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-md);
-        }
-        
-        .spec-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto var(--space);
-            color: var(--white);
-            font-size: 1.5rem;
-        }
-        
-        .spec-card h3 {
-            font-size: 1.125rem;
-            margin-bottom: var(--space-sm);
-            color: var(--dark);
-        }
-        
-        .spec-card p {
-            color: var(--dark-gray);
-            font-size: 0.875rem;
-            line-height: 1.6;
-        }
-        
-        .specs-list {
-            list-style: none;
-            margin: var(--space-xl) 0;
-        }
-        
-        .spec-item {
-            padding: var(--space-sm) 0;
-            border-bottom: 1px solid var(--light-gray);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .spec-item:last-child {
-            border-bottom: none;
-        }
-        
-        .spec-label {
-            font-weight: 600;
-            color: var(--dark);
-        }
-        
-        .spec-value {
-            color: var(--primary);
-            font-weight: 500;
-        }
-    </style>
 </head>
 <body>
     <!-- Preloader -->
@@ -124,13 +40,13 @@
                     <li class="nav-item"><a href="index.html" class="nav-link">الرئيسية</a></li>
                     <li class="nav-item"><a href="index.html#products" class="nav-link">منتجاتنا</a></li>
                     <li class="nav-item"><a href="index.html#about" class="nav-link">عن شامية</a></li>
-                    <li class="nav-item"><a href="index.html#repair" class="nav-link">خدمات الصيانة</a></li>
+                    <li class="nav-item"><a href="repair.html" class="nav-link">خدمات الصيانة</a></li>
                     <li class="nav-item"><a href="index.html#contact" class="nav-link">اتصل بنا</a></li>
                 </ul>
             </div>
             
             <div class="nav-actions">
-                <a href="tel:+963936604658" class="nav-phone">
+                <a href="tel:+963111111111" class="nav-phone">
                     <i class="fas fa-phone"></i>
                     <span class="phone-text">اتصل الآن</span>
                 </a>
@@ -143,154 +59,257 @@
         </div>
     </nav>
 
-    <!-- Product Detail Section -->
+    <!-- Product Section -->
     <section class="section product-page">
         <div class="container">
-            <div class="form-header">
-                <div class="form-breadcrumb">
-                    <a href="index.html" class="breadcrumb-link">
-                        <i class="fas fa-home"></i>
-                        الرئيسية
-                    </a>
-                    <span class="breadcrumb-separator">/</span>
-                    <a href="index.html#products" class="breadcrumb-link">المنتجات</a>
-                    <span class="breadcrumb-separator">/</span>
-                    <span class="breadcrumb-current">ثلاجة شامية 65 سم 5 رفوف</span>
-                </div>
-                
-                <h1 class="form-title">
-                    <i class="fas fa-snowflake"></i>
-                    ثلاجة شامية <span class="highlight">65 سم 5 رفوف</span>
-                </h1>
+            <div class="form-breadcrumb">
+                <a href="index.html" class="breadcrumb-link">
+                    <i class="fas fa-home"></i>
+                    الرئيسية
+                </a>
+                <span class="breadcrumb-separator">/</span>
+                <a href="index.html#products" class="breadcrumb-link">منتجاتنا</a>
+                <span class="breadcrumb-separator">/</span>
+                <span class="breadcrumb-current">ثلاجة شامية 65 سبور</span>
             </div>
             
-            <div class="product-detail">
-                <div class="about-grid">
-                    <div class="about-image">
-                        <div class="image-wrapper">
-                            <img src="product/5.png" alt="ثلاجة شامية 65 سم 5 رفوف" id="productMainImage" class="product-img" loading="lazy">
+            <div class="product-details">
+                <div class="product-gallery">
+                    <div class="main-image">
+                        <img src="product/5.png" alt="ثلاجة شامية 65 سبور" id="productMainImage" class="product-img">
+                    </div>
+                    <div class="product-thumbnails">
+                        <div class="thumbnail active" data-src="product/5.png">
+                            <img src="product/5.png" alt="ثلاجة شامية 65 سبور">
+                        </div>
+                        <!-- يمكن إضافة المزيد من الصور المصغرة هنا -->
+                    </div>
+                </div>
+                
+                <div class="product-info">
+                    <h1 class="product-title">ثلاجة شامية 65 سبور</h1>
+                    <div class="product-price">
+                        <span class="price">السعر: حسب التجهيزات</span>
+                        <span class="badge">صناعة سورية</span>
+                    </div>
+                    
+                    <div class="product-description">
+                        <h3>وصف المنتج</h3>
+                        <p>ثلاجة شامية 65 سبور بمواصفات فنية متطورة، تصميم عصري يوفر مساحة تخزين كبيرة مع استهلاك منخفض للطاقة.</p>
+                        
+                        <div class="product-specs">
+                            <h3>المواصفات الفنية</h3>
+                            <ul id="productSpecs" class="specs-list">
+                                <li>
+                                    <i class="fas fa-check-circle"></i>
+                                    <strong>السعة:</strong> 65 سبور
+                                </li>
+                                <li>
+                                    <i class="fas fa-check-circle"></i>
+                                    <strong>نوع التبريد:</strong> تبريد هجين
+                                </li>
+                                <li>
+                                    <i class="fas fa-check-circle"></i>
+                                    <strong>الضاغط:</strong> ضاغط انفرتر موفر للطاقة
+                                </li>
+                                <li>
+                                    <i class="fas fa-check-circle"></i>
+                                    <strong>سماكة العزل:</strong> 5 سنتيمتر
+                                </li>
+                                <li>
+                                    <i class="fas fa-check-circle"></i>
+                                    <strong>الأنابيب:</strong> نحاسية بطول 20 متر
+                                </li>
+                                <li>
+                                    <i class="fas fa-check-circle"></i>
+                                    <strong>قطر الأنابيب:</strong> 1/4
+                                </li>
+                                <li>
+                                    <i class="fas fa-check-circle"></i>
+                                    <strong>حماية النحاس:</strong> 6 متر
+                                </li>
+                                <li>
+                                    <i class="fas fa-check-circle"></i>
+                                    <strong>عرض الواجهة:</strong> 65 سنتيمتر
+                                </li>
+                                <li>
+                                    <i class="fas fa-check-circle"></i>
+                                    <strong>عدد الرفوف:</strong> 5 رفوف
+                                </li>
+                                <li>
+                                    <i class="fas fa-check-circle"></i>
+                                    <strong>الغاز:</strong> فريون صديق للبيئة
+                                </li>
+                                <li>
+                                    <i class="fas fa-check-circle"></i>
+                                    <strong>الضمان:</strong> 5 سنوات على الضاغط
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="product-features">
+                            <h3>المميزات</h3>
+                            <div class="features-grid">
+                                <div class="feature-item">
+                                    <i class="fas fa-bolt"></i>
+                                    <span>موفرة للطاقة</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-shield-alt"></i>
+                                    <span>ضمان ممتد</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-snowflake"></i>
+                                    <span>تبريد سريع</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-volume-mute"></i>
+                                    <span>هادئة التشغيل</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
-                    <div class="about-content">
-                        <div class="section-header">
-                            <h2 class="section-title">ثلاجة شامية <span class="highlight">65 سم 5 رفوف</span></h2>
+                    <div class="product-actions">
+                        <a href="order.html?product=5" class="btn btn-primary btn-order">
+                            <i class="fas fa-shopping-cart"></i>
+                            طلب المنتج الآن
+                        </a>
+                        <a href="tel:+963944088620" class="btn btn-secondary">
+                            <i class="fas fa-phone"></i>
+                            استفسار عن السعر
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-tabs">
+                <div class="tabs-header">
+                    <button class="tab-btn active" data-tab="details">تفاصيل المنتج</button>
+                    <button class="tab-btn" data-tab="warranty">سياسة الضمان</button>
+                    <button class="tab-btn" data-tab="delivery">التسليم والتركيب</button>
+                </div>
+                
+                <div class="tabs-content">
+                    <div class="tab-pane active" id="details">
+                        <h3>تفاصيل تقنية</h3>
+                        <p>ثلاجة شامية 65 سبور مصممة لتلبية احتياجات الأسرة السورية، تتميز بتقنية التبريد الهجين التي تضمن توزيعًا متساويًا للتبريد في جميع أجزاء الثلاجة.</p>
+                        
+                        <div class="technical-details">
+                            <div class="detail-item">
+                                <h4><i class="fas fa-thermometer-half"></i> نظام التبريد</h4>
+                                <p>نظام تبريد هجين متطور مع مبخرة لرفع الأداء وعزل مضاعف للحفاظ على درجة الحرارة المثالية.</p>
+                            </div>
+                            <div class="detail-item">
+                                <h4><i class="fas fa-cog"></i> الضاغط</h4>
+                                <p>ضاغط انفرتر من أحدث التقنيات يوفر استهلاكًا للطاقة يصل إلى 40% أقل من الضواغط التقليدية.</p>
+                            </div>
+                            <div class="detail-item">
+                                <h4><i class="fas fa-layer-group"></i> العزل الحراري</h4>
+                                <p>عزل حراري مضاعف بسمك 5 سم مصنوع من أفضل المواد العازلة للحفاظ على برودة الثلاجة وتقليل استهلاك الكهرباء.</p>
+                            </div>
+                            <div class="detail-item">
+                                <h4><i class="fas fa-tint"></i> نظام منع التسرب</h4>
+                                <p>تصميم خاص لمنع تكون الثلج وتسرب المياه مع نظام تصريف آلي للمياه الزائدة.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-pane" id="warranty">
+                        <h3>سياسة الضمان</h3>
+                        <div class="warranty-info">
+                            <div class="warranty-item">
+                                <i class="fas fa-shield-alt"></i>
+                                <h4>ضمان الضاغط</h4>
+                                <p>5 سنوات ضمان على ضاغط الإنفرتر</p>
+                            </div>
+                            <div class="warranty-item">
+                                <i class="fas fa-tools"></i>
+                                <h4>ضمان الصيانة</h4>
+                                <p>3 سنوات ضمان شامل على جميع الأجزاء</p>
+                            </div>
+                            <div class="warranty-item">
+                                <i class="fas fa-headset"></i>
+                                <h4>خدمة ما بعد البيع</h4>
+                                <p>خدمة صيانة متوفرة على مدار الساعة</p>
+                            </div>
+                            <div class="warranty-item">
+                                <i class="fas fa-truck"></i>
+                                <h4>التوصيل والتركيب</h4>
+                                <p>مجاناً في جميع المحافظات السورية</p>
+                            </div>
                         </div>
                         
-                        <p class="about-description">
-                            ثلاجة شامية 65 سم بتصميم ذكي ومدمج، تجمع بين الجمالية الوظيفية والكفاءة التقنية العالية. مزودة بـ 5 رفوف قابلة للتعديل تتيح تنظيم المساحة الداخلية بشكل مثالي وفقاً لاحتياجات المستخدم.
-                        </p>
-                        <p class="about-description">
-                            نظام التبريد الهجين المتطور يضمن الحفاظ على درجة حرارة مثالية لجميع أنواع الأطعمة والمشروبات. ضاغط إنفرتر عالي الكفاءة يعمل بتقنية متطورة تخفض استهلاك الطاقة مع الحفاظ على أداء تبريد متميز.
-                        </p>
-                        <p class="about-description">
-                            مصنوعة بمواد عالية الجودة تشمل مواسير نحاسية بطول 20 متر وقطر 1/4، مع حماية نحاسية إضافية طول 6 متر تضمن كفاءة تبريد طويلة الأمد. عزل حراري بسماكة 5 سم يحافظ على درجة الحرارة المثالية ويقلل من هدر الطاقة.
-                        </p>
+                        <div class="warranty-terms">
+                            <h4>شروط الضمان:</h4>
+                            <ul>
+                                <li>الضمان ساري من تاريخ الشراء</li>
+                                <li>يجب المحافظة على الكارت الأصلي للضمان</li>
+                                <li>يشمل الضمان الأعطال الصناعية فقط</li>
+                                <li>لا يشمل الضمان الأعطال الناتجة عن سوء الاستخدام</li>
+                                <li>يجب إبلاغ مركز الصيانة المعتمد عند حدوث أي عطل</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-pane" id="delivery">
+                        <h3>التسليم والتركيب</h3>
+                        <div class="delivery-steps">
+                            <div class="step">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <h4>تقديم الطلب</h4>
+                                    <p>تقديم طلب الشراء عبر الموقع أو الاتصال المباشر</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <h4>تأكيد الطلب</h4>
+                                    <p>سيقوم فريقنا بالاتصال بك لتأكيد التفاصيل والموعد</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <h4>التسليم</h4>
+                                    <p>تسليم المنتج في الموعد المتفق عليه</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">4</div>
+                                <div class="step-content">
+                                    <h4>التركيب والتشغيل</h4>
+                                    <p>تركيب المنتج وتشغيله وشرح طريقة الاستخدام</p>
+                                </div>
+                            </div>
+                        </div>
                         
-                        <ul class="specs-list" id="productSpecs">
-                            <!-- سيتم تعبئتها بواسطة JavaScript -->
-                        </ul>
-                        
-                        <div class="product-actions" style="margin-top: var(--space-xl);">
-                            <a href="order.html?product=5" class="btn btn-primary btn-hero">
-                                <i class="fas fa-shopping-cart"></i>
-                                <span>طلب هذا المنتج</span>
-                            </a>
-                            <a href="index.html#products" class="btn btn-secondary btn-hero">
-                                <i class="fas fa-arrow-right"></i>
-                                <span>العودة للمنتجات</span>
-                            </a>
+                        <div class="delivery-info">
+                            <div class="info-card">
+                                <i class="fas fa-clock"></i>
+                                <h4>مدة التسليم</h4>
+                                <p>24-48 ساعة في المدن الرئيسية</p>
+                            </div>
+                            <div class="info-card">
+                                <i class="fas fa-shipping-fast"></i>
+                                <h4>التكلفة</h4>
+                                <p>التوصيل والتركيب مجاناً</p>
+                            </div>
+                            <div class="info-card">
+                                <i class="fas fa-map-marked-alt"></i>
+                                <h4>مناطق التوصيل</h4>
+                                <p>جميع المحافظات السورية</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <div class="product-features" style="margin-top: var(--space-2xl);">
-                <div class="section-header">
-                    <h2 class="section-title">مميزات <span class="highlight">التصميم والتقنية</span></h2>
-                </div>
-                
-                <div class="about-features">
-                    <div class="about-feature">
-                        <div class="feature-icon">
-                            <i class="fas fa-puzzle-piece"></i>
-                        </div>
-                        <div class="feature-content">
-                            <h3>تصميم ذكي ومدمج</h3>
-                            <p>تصميم 65 سم يتناسب مع المساحات المحدودة، مع الحفاظ على سعة تخزينية كبيرة ومرونة في الاستخدام.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="about-feature">
-                        <div class="feature-icon">
-                            <i class="fas fa-sliders-h"></i>
-                        </div>
-                        <div class="feature-content">
-                            <h3>أرفف قابلة للتشكيل</h3>
-                            <p>5 رفوف قابلة للتعديل والتشكيل حسب الاحتياج، تتيح تنظيم المساحة الداخلية بشكل مثالي.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="about-feature">
-                        <div class="feature-icon">
-                            <i class="fas fa-braille"></i>
-                        </div>
-                        <div class="feature-content">
-                            <h3>واجهة تحكم رقمية</h3>
-                            <p>شاشة تحكم رقمية تتيح ضبط درجات الحرارة والإعدادات بسهولة ودقة عالية.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="about-feature">
-                        <div class="feature-icon">
-                            <i class="fas fa-volume-mute"></i>
-                        </div>
-                        <div class="feature-content">
-                            <h3>تشغيل هادئ</h3>
-                            <p>ضاغط إنفرتر يعمل بصمت، مثالي للمطابخ المفتوحة والمناطق التي تتطلب هدوءاً.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- قسم المواصفات الفنية -->
-            <div class="technical-specs" style="margin-top: var(--space-2xl);">
-                <div class="section-header">
-                    <h2 class="section-title">المواصفات <span class="highlight">الفنية</span></h2>
-                </div>
-                
-                <div class="specs-grid">
-                    <div class="spec-card">
-                        <div class="spec-icon">
-                            <i class="fas fa-cube"></i>
-                        </div>
-                        <h3>التصميم</h3>
-                        <p>عرض 65 سم<br>5 رفوف قابلة للتعديل<br>تصميم مدمج ومرن</p>
-                    </div>
-                    
-                    <div class="spec-card">
-                        <div class="spec-icon">
-                            <i class="fas fa-tachometer-alt"></i>
-                        </div>
-                        <h3>الأداء</h3>
-                        <p>تبريد هجين متطور<br>ضاغط إنفرتر ذكي<br>أداء تبريد عالي</p>
-                    </div>
-                    
-                    <div class="spec-card">
-                        <div class="spec-icon">
-                            <i class="fas fa-user-cog"></i>
-                        </div>
-                        <h3>التحكم</h3>
-                        <p>واجهة تحكم رقمية<br>ضبط حراري دقيق<br>إعدادات متعددة</p>
-                    </div>
-                    
-                    <div class="spec-card">
-                        <div class="spec-icon">
-                            <i class="fas fa-award"></i>
-                        </div>
-                        <h3>الجودة</h3>
-                        <p>مواسير نحاس 20 متر<br>عزل حراري 5 سم<br>مواد عالية الجودة</p>
-                    </div>
+            <div class="related-products">
+                <h2 class="section-title">منتجات ذات صلة</h2>
+                <div class="products-grid" id="relatedProducts">
+                    <!-- سيتم ملؤها بواسطة JavaScript -->
                 </div>
             </div>
         </div>
@@ -308,9 +327,10 @@
                         ثلاجات شامية - صناعة سورية بجودة عالمية، نلتزم بتقديم أفضل المنتجات والخدمات لعملائنا الكرام.
                     </p>
                     <div class="footer-social">
-                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="https://api.whatsapp.com/send?phone=963936604658" class="social-link" target="_blank"><i class="fab fa-whatsapp"></i></a>                        
+                        <a href="https://www.facebook.com/share/1CfTjAu3jq/" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/shamia_aleppo?igsh=Z3UxZzV1Nm9nZWNn" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/963936604658" class="social-link" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
                 
@@ -320,7 +340,7 @@
                         <li><a href="index.html">الرئيسية</a></li>
                         <li><a href="index.html#products">منتجاتنا</a></li>
                         <li><a href="index.html#about">عن شامية</a></li>
-                        <li><a href="index.html#repair">خدمات الصيانة</a></li>
+                        <li><a href="repair.html">خدمات الصيانة</a></li>
                         <li><a href="index.html#contact">اتصل بنا</a></li>
                     </ul>
                 </div>
@@ -330,7 +350,7 @@
                     <p>كن أول من يعرف عن عروضنا الجديدة ومنتجاتنا الحديثة</p>
                     <form class="newsletter-form">
                         <div class="form-group">
-                            <input type="email" placeholder="بريدك الإلكتروني" required>
+                            <input type="text" placeholder="بريدك الإلكتروني" required>
                             <button type="submit" class="btn-subscribe">
                                 <i class="fas fa-paper-plane"></i>
                             </button>
@@ -352,7 +372,7 @@
     </footer>
 
     <!-- WhatsApp Float Button -->
-    <a href="https://wa.me/+963936604658" class="whatsapp-float" target="_blank" aria-label="تواصل عبر واتساب">
+    <a href="https://wa.me/963936604658" class="whatsapp-float" target="_blank" aria-label="تواصل عبر واتساب">
         <i class="fab fa-whatsapp"></i>
     </a>
 
