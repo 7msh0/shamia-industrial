@@ -1182,4 +1182,3 @@ function showNotification(message, type) {
         }
     }, 4000);
 }
-
