@@ -34,13 +34,10 @@ function initComponents() {
         initMap();
     }
     
-    // Initialize form functionality on order/repair pages
-    if (document.getElementById('orderForm')) {
-        initOrderForm();
-    }
-    
-    if (document.getElementById('repairForm')) {
-        initRepairForm();
+    // Initialize form functionality
+    if (document.querySelector('.form-section')) {
+        initFormPages();
+        initFormSubmissions();
     }
     
     // Initialize product page if needed
@@ -154,84 +151,73 @@ function loadProducts() {
     const productsGrid = document.getElementById('productsGrid');
     if (!productsGrid) return;
     
-    // Product data
+    // Product data - UPDATED WITH CORRECT INFORMATION
     const products = [
         { 
             id: 1, 
-            name: "ثلاجة شامية ١٢ قدم", 
-            desc: "ثلاجة ١٢ قدم بتصميم عصري، موفرة للطاقة بنسبة ٤٠٪، مزودة بثلاث أدراج وضاغط ساكن.",
-            features: ["تبريد موحد", "ضاغط ساكن", "شاشة تحكم", "٣ أدراج"],
+            name: "ثلاجة شامية 70 سنتيمتر", 
+            desc: "تبريد هجين ومبخرة لرفع الأداء، عزل مضاعف، ضاغط انفرتر، عزل 6 سم، أنابيب نحاسية 22 متر.",
             category: "home"
         },
         { 
             id: 2, 
-            name: "ثلاجة شامية ١٤ قدم", 
-            desc: "ثلاجة ١٤ قدم مع نظام التبريد الذكي، سعة تخزين كبيرة، مناسبة للعائلات المتوسطة.",
-            features: ["نظام تبريد ذكي", "مؤشر درجة الحرارة", "٤ أدراج", "مقاومة للصقيع"],
+            name: "ثلاجة شامية 80 سنتيمتر", 
+            desc: "تبريد هجين ومبخرة، عزل مضاعف، ضاغط انفرتر، عزل 6 سم، أنابيب نحاسية 22 متر، عرض 80 سم.",
             category: "home"
         },
         { 
             id: 3, 
-            name: "ثلاجة شامية ١٦ قدم", 
-            desc: "ثلاجة ١٦ قدم، فريزر سفلي، تقنية التبريد السريع، تصميم فاخر.",
-            features: ["فريزر سفلي", "تبريد سريع", "توفير طاقة", "شاشة لمس"],
+            name: "ثلاجة شامية 80 سنتيمتر", 
+            desc: "تبريد هجين ومبخرة، عزل مضاعف، ضاغط انفرتر، عزل 6 سم، أنابيب نحاسية 22 متر، 5 رفوف.",
             category: "home"
         },
         { 
             id: 4, 
-            name: "ثلاجة شامية ١٨ قدم", 
-            desc: "ثلاجة ١٨ قدم، نظام تبريد مزدوج، مقاومة للصقيع، سعة كبيرة.",
-            features: ["نظام تبريد مزدوج", "مقاومة الصقيع", "٥ أدراج", "عزل حراري"],
+            name: "ثلاجة شامية 65 سبور", 
+            desc: "تبريد هجين ومبخرة، عزل مضاعف 5 سم، ضاغط انفرتر، أنابيب نحاسية 20 متر، 5 رفوف.",
             category: "home"
         },
         { 
             id: 5, 
-            name: "ثلاجة شامية ٢٠ قدم", 
-            desc: "ثلاجة ٢٠ قدم، ضاغط ساكن، تصميم فاخر، مناسبة للعائلات الكبيرة.",
-            features: ["ضاغط ساكن", "تصميم فاخر", "إضاءة LED", "تحكم رقمي"],
+            name: "ثلاجة شامية 65 سبور", 
+            desc: "تبريد هجين ومبخرة، عزل مضاعف 5 سم، ضاغط انفرتر، أنابيب نحاسية 20 متر، عرض 65 سم.",
             category: "home"
         },
         { 
             id: 6, 
-            name: "ثلاجة شامية ٢٢ قدم", 
-            desc: "ثلاجة ٢٢ قدم، نظام توزيع هواء ذكي، سعة كبيرة، موفرة للطاقة.",
-            features: ["توزيع هواء ذكي", "سعة كبيرة", "أرفف قابلة للتعديل", "عمر طويل"],
+            name: "ثلاجة شامية 65 سبور", 
+            desc: "تبريد هجين ومبخرة، عزل مضاعف 5 سم، ضاغط انفرتر، أنابيب نحاسية 20 متر، موفر للطاقة.",
             category: "home"
         },
         { 
             id: 7, 
-            name: "ثلاجة شامية ٢٤ قدم", 
-            desc: "ثلاجة ٢٤ قدم، بابين، صناعة سورية ١٠٠٪، ضمان ١٠ سنوات.",
-            features: ["بابين", "صناعة سورية", "ضمان ١٠ سنوات", "تصميم كلاسيكي"],
+            name: "ثلاجة شامية 70 سنتيمتر", 
+            desc: "تبريد هجين ومبخرة، عزل مضاعف 6 سم، ضاغط انفرتر، أنابيب نحاسية 22 متر، صناعة سورية.",
             category: "home"
         },
         { 
             id: 8, 
-            name: "ثلاجة شامية ١٠ قدم", 
-            desc: "ثلاجة ١٠ قدم، مناسبة للمكاتب والاستخدام الخفيف، هادئة التشغيل.",
-            features: ["حجم صغير", "مناسبة للمكاتب", "هادئة", "سهلة النقل"],
+            name: "ثلاجة شامية 80 سنتيمتر", 
+            desc: "تبريد هجين ومبخرة، عزل مضاعف 6 سم، ضاغط انفرتر، أنابيب نحاسية 22 متر، 5 رفوف.",
             category: "home"
         },
         { 
             id: 9, 
-            name: "ثلاجة شامية ٨ قدم", 
-            desc: "ثلاجة ٨ قدم، صغيرة الحجم، كبيرة الأداء، موفرة للطاقة.",
-            features: ["حجم مضغوط", "أداء عالي", "موفرة للطاقة", "سهلة التركيب"],
+            name: "ثلاجة شامية 70 سنتيمتر", 
+            desc: "تبريد هجين ومبخرة، عزل مضاعف 6 سم، ضاغط انفرتر، أنابيب نحاسية 22 متر، تصميم عصري.",
             category: "home"
         },
         { 
             id: 10, 
-            name: "ثلاجة شامية التجارية", 
-            desc: "ثلاجة تجارية ٣٠ قدم، مناسبة للمطاعم والمحلات، متحملة للاستخدام المكثف.",
-            features: ["سعة تجارية", "متحمل للاستخدام المكثف", "تبريد سريع", "ضمان ممتد"],
-            category: "commercial"
+            name: "ثلاجة شامية 70 سنتيمتر", 
+            desc: "تبريد هجين ومبخرة، عزل مضاعف 6 سم، ضاغط انفرتر، أنابيب نحاسية 22 متر، غاز صديق للبيئة.",
+            category: "home"
         },
         { 
             id: 11, 
-            name: "ثلاجة شامية الذكية", 
-            desc: "ثلاجة ذكية ١٨ قدم، متصلة بالإنترنت، تحكم صوتي، تحديثات برمجية.",
-            features: ["ذكية", "متصلة بالإنترنت", "تحكم صوتي", "تحديثات برمجية"],
-            category: "home"
+            name: "فريزر شامية التجاري الواسع", 
+            desc: "فريزر تجاري واسع، سعة كبيرة، تبريد سريع وقوي، استهلاك منخفض للطاقة، صناعة سورية.",
+            category: "commercial"
         }
     ];
     
@@ -256,9 +242,6 @@ function loadProducts() {
             <div class="product-content">
                 <h3 class="product-title">${product.name}</h3>
                 <p class="product-description">${product.desc}</p>
-                <ul class="product-features">
-                    ${product.features.map(feature => `<li>${feature}</li>`).join('')}
-                </ul>
                 <a href="${product.id}.html" class="btn btn-primary product-action">
                     <i class="fas fa-eye"></i>
                     <span>عرض التفاصيل</span>
@@ -350,11 +333,11 @@ function initHeroAnimation() {
 
 // Initialize map
 function initMap() {
-    // Default location (Damascus, Syria)
-    const damascus = [33.5138, 36.2765];
+    // Default location (Aleppo, Syria)
+    const location = [36.2021, 37.1343];
     
     // Create map
-    const map = L.map('map').setView(damascus, 13);
+    const map = L.map('map').setView(location, 13);
     
     // Add tile layer
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -371,8 +354,8 @@ function initMap() {
     });
     
     // Add marker
-    L.marker(damascus, { icon: customIcon }).addTo(map)
-        .bindPopup('<b>شامية للثلاجات</b><br>دمشق، شارع الثورة')
+    L.marker(location, { icon: customIcon }).addTo(map)
+        .bindPopup('<b>شامية للثلاجات</b><br>حلب - الشيخ نجار')
         .openPopup();
     
     // Adjust map on window resize
@@ -383,260 +366,21 @@ function initMap() {
     });
 }
 
-// Initialize order form
-function initOrderForm() {
-    const orderForm = document.getElementById('orderForm');
-    const citySelect = document.getElementById('city');
-    const mapContainer = document.getElementById('orderMap');
-    const whatsappBtn = document.getElementById('whatsappBtn');
-    
-    if (!orderForm) return;
-    
-    // Syrian cities
-    const syrianCities = [
-        "دمشق", "حلب", "حمص", "اللاذقية", "حماة", "طرطوس", "دير الزور",
-        "السويداء", "درعا", "القنيطرة", "ريف دمشق", "إدلب", "الحسكة", "الرقة"
-    ];
-    
-    // Populate cities dropdown
-    syrianCities.forEach(city => {
-        const option = document.createElement('option');
-        option.value = city;
-        option.textContent = city;
-        citySelect.appendChild(option);
-    });
-    
-    // Initialize map for order form
-    let orderMap;
-    let orderMarker;
-    
-    if (mapContainer) {
-        orderMap = L.map('orderMap').setView([35.0000, 38.0000], 7);
-        
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; OpenStreetMap contributors'
-        }).addTo(orderMap);
-        
-        // Adjust map on window resize
-        window.addEventListener('resize', function() {
-            setTimeout(() => {
-                orderMap.invalidateSize();
-            }, 100);
-        });
-        
-        // Add click event to place marker
-        orderMap.on('click', function(e) {
-            const lat = e.latlng.lat;
-            const lng = e.latlng.lng;
-            
-            // Remove existing marker
-            if (orderMarker) {
-                orderMap.removeLayer(orderMarker);
-            }
-            
-            // Custom icon
-            const customIcon = L.divIcon({
-                className: 'custom-marker',
-                html: '<i class="fas fa-map-pin"></i>',
-                iconSize: [40, 40],
-                iconAnchor: [20, 40]
-            });
-            
-            // Add new marker
-            orderMarker = L.marker([lat, lng], { icon: customIcon }).addTo(orderMap);
-            
-            // Update hidden inputs
-            document.getElementById('locationLat').value = lat.toFixed(6);
-            document.getElementById('locationLng').value = lng.toFixed(6);
-            
-            // Show success message
-            showNotification('تم تحديد موقعك بنجاح!', 'success');
-        });
-    }
-    
-    // Form submission
-    orderForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Validate form
-        if (!validateForm(orderForm)) {
-            return;
-        }
-        
-        // Get form data
-        const formData = {
-            name: document.getElementById('name').value,
-            city: document.getElementById('city').value,
-            tubeType: document.querySelector('input[name="tubeType"]:checked')?.value || 'لا تفضيل',
-            locationLat: document.getElementById('locationLat').value,
-            locationLng: document.getElementById('locationLng').value,
-            notes: document.getElementById('notes').value || 'لا توجد ملاحظات',
-            product: getProductFromURL() || 'ثلاجة شامية',
-            date: new Date().toLocaleDateString('ar-SY'),
-            time: new Date().toLocaleTimeString('ar-SY')
-        };
-        
-        // Create WhatsApp message
-        const message = `📋 *طلب شراء ثلاجة شامية*%0A%0A`
-            + `👤 *الاسم:* ${formData.name}%0A`
-            + `🏙️ *المدينة:* ${formData.city}%0A`
-            + `🔧 *نوع الأنابيب:* ${formData.tubeType}%0A`
-            + `🛒 *المنتج:* ${formData.product}%0A`
-            + `📍 *الموقع:* ${formData.locationLat ? `https://maps.google.com/?q=${formData.locationLat},${formData.locationLng}` : 'غير محدد'}%0A`
-            + `📝 *ملاحظات:* ${formData.notes}%0A`
-            + `📅 *التاريخ:* ${formData.date}%0A`
-            + `⏰ *الوقت:* ${formData.time}%0A%0A`
-            + `_هذا الطلب تم إرساله من موقع شامية للثلاجات_`;
-        
-        // Update WhatsApp button link
-        if (whatsappBtn) {
-            whatsappBtn.href = `https://wa.me/963111111111?text=${message}`;
-            whatsappBtn.target = '_blank';
-            
-            // Show success message
-            showNotification('تم حفظ بيانات الطلب! اضغط على زر الواتساب لإرسال الطلب.', 'success');
-        }
-    });
-}
-
-// Initialize repair form
-function initRepairForm() {
-    const repairForm = document.getElementById('repairForm');
-    const fridgeSelect = document.getElementById('fridgeModel');
-    const mapContainer = document.getElementById('repairMap');
-    const whatsappBtn = document.getElementById('repairWhatsappBtn');
-    
-    if (!repairForm) return;
-    
-    // Populate refrigerator options
-    const fridgeModels = [
-        { id: 1, name: "ثلاجة شامية ١٢ قدم" },
-        { id: 2, name: "ثلاجة شامية ١٤ قدم" },
-        { id: 3, name: "ثلاجة شامية ١٦ قدم" },
-        { id: 4, name: "ثلاجة شامية ١٨ قدم" },
-        { id: 5, name: "ثلاجة شامية ٢٠ قدم" },
-        { id: 6, name: "ثلاجة شامية ٢٢ قدم" },
-        { id: 7, name: "ثلاجة شامية ٢٤ قدم" },
-        { id: 8, name: "ثلاجة شامية ١٠ قدم" },
-        { id: 9, name: "ثلاجة شامية ٨ قدم" },
-        { id: 10, name: "ثلاجة شامية التجارية" },
-        { id: 11, name: "ثلاجة شامية الذكية" }
-    ];
-    
-    fridgeModels.forEach(model => {
-        const option = document.createElement('option');
-        option.value = model.id;
-        option.textContent = model.name;
-        fridgeSelect.appendChild(option);
-    });
-    
-    // Initialize map for repair form
-    let repairMap;
-    let repairMarker;
-    
-    if (mapContainer) {
-        repairMap = L.map('repairMap').setView([35.0000, 38.0000], 7);
-        
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; OpenStreetMap contributors'
-        }).addTo(repairMap);
-        
-        // Adjust map on window resize
-        window.addEventListener('resize', function() {
-            setTimeout(() => {
-                repairMap.invalidateSize();
-            }, 100);
-        });
-        
-        // Add click event to place marker
-        repairMap.on('click', function(e) {
-            const lat = e.latlng.lat;
-            const lng = e.latlng.lng;
-            
-            // Remove existing marker
-            if (repairMarker) {
-                repairMap.removeLayer(repairMarker);
-            }
-            
-            // Custom icon
-            const customIcon = L.divIcon({
-                className: 'custom-marker repair',
-                html: '<i class="fas fa-tools"></i>',
-                iconSize: [40, 40],
-                iconAnchor: [20, 40]
-            });
-            
-            // Add new marker
-            repairMarker = L.marker([lat, lng], { icon: customIcon }).addTo(repairMap);
-            
-            // Update hidden inputs
-            document.getElementById('repairLocationLat').value = lat.toFixed(6);
-            document.getElementById('repairLocationLng').value = lng.toFixed(6);
-            
-            // Show success message
-            showNotification('تم تحديد موقعك بنجاح!', 'success');
-        });
-    }
-    
-    // Form submission
-    repairForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Validate form
-        if (!validateForm(repairForm)) {
-            return;
-        }
-        
-        // Get form data
-        const formData = {
-            name: document.getElementById('repairName').value,
-            fridgeModel: fridgeSelect.options[fridgeSelect.selectedIndex].text,
-            problem: document.getElementById('problem').value,
-            locationLat: document.getElementById('repairLocationLat').value,
-            locationLng: document.getElementById('repairLocationLng').value,
-            repairTime: document.getElementById('repairTime').value,
-            date: new Date().toLocaleDateString('ar-SY'),
-            time: new Date().toLocaleTimeString('ar-SY')
-        };
-        
-        // Create WhatsApp message
-        const message = `🔧 *طلب خدمة صيانة ثلاجات شامية*%0A%0A`
-            + `👤 *الاسم:* ${formData.name}%0A`
-            + `❄️ *موديل الثلاجة:* ${formData.fridgeModel}%0A`
-            + `⚠️ *وصف المشكلة:* ${formData.problem}%0A`
-            + `📍 *الموقع:* ${formData.locationLat ? `https://maps.google.com/?q=${formData.locationLat},${formData.locationLng}` : 'غير محدد'}%0A`
-            + `⏰ *الوقت المناسب:* ${formData.repairTime}%0A`
-            + `📅 *التاريخ:* ${formData.date}%0A`
-            + `🕐 *وقت الإرسال:* ${formData.time}%0A%0A`
-            + `_هذا الطلب تم إرساله من موقع شامية للثلاجات_`;
-        
-        // Update WhatsApp button link
-        if (whatsappBtn) {
-            whatsappBtn.href = `https://wa.me/963111111111?text=${message}`;
-            whatsappBtn.target = '_blank';
-            
-            // Show success message
-            showNotification('تم حفظ بيانات الصيانة! اضغط على زر الواتساب لإرسال الطلب.', 'success');
-        }
-    });
-}
-
 // Initialize product page
 function initProductPage() {
-    // Get product ID from URL or page
+    // Get product ID from URL
     const pathname = window.location.pathname;
     const productId = pathname.split('/').pop().replace('.html', '');
     
     // Update product image and details based on product ID
-    const productImage = document.querySelector('.product-gallery img');
-    const productTitle = document.querySelector('.product-info h1');
-    const productDesc = document.querySelector('.product-description');
-    const specsList = document.querySelector('.specs-list');
+    const productImage = document.getElementById('productMainImage');
+    const productTitle = document.querySelector('.form-title');
+    const specsList = document.getElementById('productSpecs');
     
+    // Update product image
     if (productImage && productId) {
         productImage.src = `product/${productId}.png`;
         productImage.alt = `ثلاجة شامية ${productId}`;
-        productImage.setAttribute('data-src', `product/${productId}.png`);
         
         // Add loading animation
         productImage.classList.add('loading');
@@ -651,63 +395,653 @@ function initProductPage() {
         };
     }
     
-    // Update product details
-    if (productId) {
-        const productDetails = {
-            '1': {
-                name: 'ثلاجة شامية ١٢ قدم - موديل 2023',
-                desc: 'ثلاجة شامية ١٢ قدم بتصميم أنيق وحديث، توفر مساحة تخزين كبيرة مع استهلاك منخفض للطاقة. مزودة بتقنية التبريد الذكي التي تحافظ على الطعام طازجاً لفترة أطول. تتميز بضاغط ساكن يقلل من استهلاك الطاقة ويوفر في فواتير الكهرباء، مع نظام تبريد موحد يحافظ على درجة حرارة مثالية في جميع أجزاء الثلاجة.',
-                specs: [
-                    { label: 'السعة', value: '١٢ قدم (٣٤٠ لتر)' },
-                    { label: 'اللون', value: 'فضي / أبيض' },
-                    { label: 'نوع التبريد', value: 'تبريد هوائي ذكي' },
-                    { label: 'الطاقة', value: '⭐️⭐️⭐️⭐️ (موفر للطاقة)' },
-                    { label: 'الضاغط', value: 'ضاغط ساكن موفر للطاقة' },
-                    { label: 'الضمان', value: '١٠ سنوات على الضاغط' },
-                    { label: 'الأبعاد', value: 'عرض ٦٠ سم × عمق ٦٥ سم × ارتفاع ١٦٠ سم' },
-                    { label: 'المميزات', value: 'مؤشر درجة الحرارة، أرفف قابلة للتعديل' }
-                ]
-            },
-            '2': {
-                name: 'ثلاجة شامية ١٤ قدم - موديل 2023',
-                desc: 'ثلاجة شامية ١٤ قدم مع نظام التبريد الذكي المتطور، تقدم أداءً استثنائياً مع توفير استهلاك الطاقة. مثالية للعائلات المتوسطة.',
-                specs: [
-                    { label: 'السعة', value: '١٤ قدم (٣٩٦ لتر)' },
-                    { label: 'اللون', value: 'فضي' },
-                    { label: 'نوع التبريد', value: 'نظام تبريد ذكي' },
-                    { label: 'الطاقة', value: '⭐️⭐️⭐️⭐️⭐️ (موفر للطاقة)' },
-                    { label: 'الضاغط', value: 'ضاغط ساكن' },
-                    { label: 'الضمان', value: '١٠ سنوات على الضاغط' },
-                    { label: 'الأبعاد', value: 'عرض ٦٥ سم × عمق ٦٨ سم × ارتفاع ١٦٥ سم' },
-                    { label: 'المميزات', value: 'مؤشر رقمي، ٤ أدراج كبيرة' }
-                ]
-            }
-        };
-        
-        const details = productDetails[productId] || productDetails['1'];
-        
-        if (productTitle) productTitle.textContent = details.name;
-        if (productDesc) productDesc.textContent = details.desc;
-        
-        // Update specs list
-        if (specsList) {
-            specsList.innerHTML = '';
-            details.specs.forEach(spec => {
-                const li = document.createElement('li');
-                li.className = 'spec-item';
-                li.innerHTML = `
-                    <span class="spec-label">${spec.label}:</span>
-                    <span class="spec-value">${spec.value}</span>
-                `;
-                specsList.appendChild(li);
-            });
+    // Product details from your data
+    const productDetails = {
+        '1': {
+            name: 'ثلاجة شامية 70 سنتيمتر',
+            specs: [
+                { label: 'السعة', value: '70 سنتيمتر' },
+                { label: 'نوع التبريد', value: 'تبريد هجين' },
+                { label: 'الضاغط', value: 'ضاغط انفرتر' },
+                { label: 'سماكة العزل', value: '٦ سنتمتر' },
+                { label: 'الأنابيب', value: 'نحاسية بطول ٢٢ متر' },
+                { label: 'قطر الأنابيب', value: '٥/١٦' },
+                { label: 'حماية النحاس', value: '٨ متر' },
+                { label: 'الغاز', value: 'فريون صديق للبيئة' }
+            ]
+        },
+        '2': {
+            name: 'ثلاجة شامية 80 سنتيمتر',
+            specs: [
+                { label: 'السعة', value: '80 سنتيمتر' },
+                { label: 'نوع التبريد', value: 'تبريد هجين' },
+                { label: 'الضاغط', value: 'ضاغط انفرتر' },
+                { label: 'سماكة العزل', value: '٦ سنتمتر' },
+                { label: 'الأنابيب', value: 'نحاسية بطول ٢٢ متر' },
+                { label: 'قطر الأنابيب', value: '٥/١٦' },
+                { label: 'حماية النحاس', value: '٩ متر' },
+                { label: 'عرض الواجهة', value: '٨٠ سنتيمتر' },
+                { label: 'عدد الرفوف', value: '٥ رفوف' }
+            ]
+        },
+        '3': {
+            name: 'ثلاجة شامية 80 سنتيمتر',
+            specs: [
+                { label: 'السعة', value: '80 سنتيمتر' },
+                { label: 'نوع التبريد', value: 'تبريد هجين' },
+                { label: 'الضاغط', value: 'ضاغط انفرتر' },
+                { label: 'سماكة العزل', value: '٦ سنتمتر' },
+                { label: 'الأنابيب', value: 'نحاسية بطول ٢٢ متر' },
+                { label: 'قطر الأنابيب', value: '٥/١٦' },
+                { label: 'حماية النحاس', value: '٩ متر' },
+                { label: 'عرض الواجهة', value: '٨٠ سنتيمتر' },
+                { label: 'عدد الرفوف', value: '٥ رفوف' }
+            ]
+        },
+        '4': {
+            name: 'ثلاجة شامية 65 سبور',
+            specs: [
+                { label: 'السعة', value: '65 سبور' },
+                { label: 'نوع التبريد', value: 'تبريد هجين' },
+                { label: 'الضاغط', value: 'ضاغط انفرتر' },
+                { label: 'سماكة العزل', value: '٥ سنتمتر' },
+                { label: 'الأنابيب', value: 'نحاسية بطول ٢٠ متر' },
+                { label: 'قطر الأنابيب', value: '١/٤' },
+                { label: 'حماية النحاس', value: '٦ متر' },
+                { label: 'عرض الواجهة', value: '٦٥ سنتيمتر' },
+                { label: 'عدد الرفوف', value: '٥ رفوف' }
+            ]
+        },
+        '5': {
+            name: 'ثلاجة شامية 65 سبور',
+            specs: [
+                { label: 'السعة', value: '65 سبور' },
+                { label: 'نوع التبريد', value: 'تبريد هجين' },
+                { label: 'الضاغط', value: 'ضاغط انفرتر' },
+                { label: 'سماكة العزل', value: '٥ سنتمتر' },
+                { label: 'الأنابيب', value: 'نحاسية بطول ٢٠ متر' },
+                { label: 'قطر الأنابيب', value: '١/٤' },
+                { label: 'حماية النحاس', value: '٦ متر' },
+                { label: 'عرض الواجهة', value: '٦٥ سنتيمتر' },
+                { label: 'عدد الرفوف', value: '٥ رفوف' }
+            ]
+        },
+        '6': {
+            name: 'ثلاجة شامية 65 سبور',
+            specs: [
+                { label: 'السعة', value: '65 سبور' },
+                { label: 'نوع التبريد', value: 'تبريد هجين' },
+                { label: 'الضاغط', value: 'ضاغط انفرتر' },
+                { label: 'سماكة العزل', value: '٥ سنتمتر' },
+                { label: 'الأنابيب', value: 'نحاسية بطول ٢٠ متر' },
+                { label: 'قطر الأنابيب', value: '١/٤' },
+                { label: 'حماية النحاس', value: '٦ متر' },
+                { label: 'عرض الواجهة', value: '٦٥ سنتيمتر' },
+                { label: 'عدد الرفوف', value: '٥ رفوف' }
+            ]
+        },
+        '7': {
+            name: 'ثلاجة شامية 70 سنتيمتر',
+            specs: [
+                { label: 'السعة', value: '70 سنتيمتر' },
+                { label: 'نوع التبريد', value: 'تبريد هجين' },
+                { label: 'الضاغط', value: 'ضاغط انفرتر' },
+                { label: 'سماكة العزل', value: '٦ سنتمتر' },
+                { label: 'الأنابيب', value: 'نحاسية بطول ٢٢ متر' },
+                { label: 'قطر الأنابيب', value: '٥/١٦' },
+                { label: 'حماية النحاس', value: '٨ متر' },
+                { label: 'الغاز', value: 'فريون صديق للبيئة' }
+            ]
+        },
+        '8': {
+            name: 'ثلاجة شامية 80 سنتيمتر',
+            specs: [
+                { label: 'السعة', value: '80 سنتيمتر' },
+                { label: 'نوع التبريد', value: 'تبريد هجين' },
+                { label: 'الضاغط', value: 'ضاغط انفرتر' },
+                { label: 'سماكة العزل', value: '٦ سنتمتر' },
+                { label: 'الأنابيب', value: 'نحاسية بطول ٢٢ متر' },
+                { label: 'قطر الأنابيب', value: '٥/١٦' },
+                { label: 'حماية النحاس', value: '٩ متر' },
+                { label: 'عرض الواجهة', value: '٨٠ سنتيمتر' },
+                { label: 'عدد الرفوف', value: '٥ رفوف' }
+            ]
+        },
+        '9': {
+            name: 'ثلاجة شامية 70 سنتيمتر',
+            specs: [
+                { label: 'السعة', value: '70 سنتيمتر' },
+                { label: 'نوع التبريد', value: 'تبريد هجين' },
+                { label: 'الضاغط', value: 'ضاغط انفرتر' },
+                { label: 'سماكة العزل', value: '٦ سنتمتر' },
+                { label: 'الأنابيب', value: 'نحاسية بطول ٢٢ متر' },
+                { label: 'قطر الأنابيب', value: '٥/١٦' },
+                { label: 'حماية النحاس', value: '٨ متر' },
+                { label: 'الغاز', value: 'فريون صديق للبيئة' }
+            ]
+        },
+        '10': {
+            name: 'ثلاجة شامية 70 سنتيمتر',
+            specs: [
+                { label: 'السعة', value: '70 سنتيمتر' },
+                { label: 'نوع التبريد', value: 'تبريد هجين' },
+                { label: 'الضاغط', value: 'ضاغط انفرتر' },
+                { label: 'سماكة العزل', value: '٦ سنتمتر' },
+                { label: 'الأنابيب', value: 'نحاسية بطول ٢٢ متر' },
+                { label: 'قطر الأنابيب', value: '٥/١٦' },
+                { label: 'حماية النحاس', value: '٨ متر' },
+                { label: 'الغاز', value: 'فريون صديق للبيئة' }
+            ]
+        },
+        '11': {
+            name: 'فريزر شامية التجاري الواسع',
+            specs: [
+                { label: 'النوع', value: 'فريزر تجاري واسع' },
+                { label: 'الاستخدام', value: 'تجاري مكثف' },
+                { label: 'التبريد', value: 'تبريد سريع وقوي' },
+                { label: 'السعة', value: 'كبيرة' },
+                { label: 'الطاقة', value: 'موفر للطاقة' },
+                { label: 'التصنيع', value: 'صناعة سورية' },
+                { label: 'المواد', value: 'عالية الجودة' },
+                { label: 'الضمان', value: 'ضمان ممتد' }
+            ]
         }
+    };
+    
+    const details = productDetails[productId] || productDetails['1'];
+    
+    // Update page title and breadcrumb
+    if (productTitle) {
+        document.title = `${details.name} - شامية`;
     }
     
-    // Update order button link
-    const orderBtn = document.querySelector('.btn-order');
-    if (orderBtn && productId) {
-        orderBtn.href = `order.html?product=${productId}`;
+    // Update breadcrumb
+    const breadcrumbCurrent = document.querySelector('.breadcrumb-current');
+    if (breadcrumbCurrent && details.name) {
+        breadcrumbCurrent.textContent = details.name;
+    }
+}
+
+// Form handling functions from old main.js
+function initFormPages() {
+    if (document.querySelector('.form-step')) {
+        initMultiStepForms();
+        populateFormSelects();
+        initFormMaps();
+    }
+}
+function initMultiStepForms() {
+    const forms = document.querySelectorAll('.form-content');
+    
+    forms.forEach(form => {
+        const steps = form.querySelectorAll('.form-step');
+        const nextBtns = form.querySelectorAll('.btn-next');
+        const prevBtns = form.querySelectorAll('.btn-prev');
+        const progressFill = form.closest('.form-container')?.querySelector('.progress-fill');
+        const progressSteps = form.closest('.form-container')?.querySelectorAll('.progress-step');
+        
+        if (!steps.length) return;
+        
+        let currentStep = 0;
+        showStep(currentStep);
+        
+        // Next button click
+        nextBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                if (validateStep(currentStep)) {
+                    currentStep++;
+                    updateProgress();
+                    showStep(currentStep);
+                    // تحديث الملخص ورابط واتساب
+                    updateSummary();
+                }
+            });
+        });
+        prevBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                currentStep--;
+                updateProgress();
+                showStep(currentStep);
+                // تحديث الملخص ورابط واتساب
+                updateSummary();
+            });
+        });
+
+        
+        // Edit button in order summary
+        const editOrderBtn = document.getElementById('editOrderBtn');
+        if (editOrderBtn) {
+            editOrderBtn.addEventListener('click', function() {
+                currentStep = 0;
+                updateProgress();
+                showStep(currentStep);
+            });
+        }
+        
+        function showStep(step) {
+            steps.forEach(s => s.classList.remove('active'));
+            if (steps[step]) {
+                steps[step].classList.add('active');
+            }
+        }
+        
+        function updateProgress() {
+            const progress = ((currentStep + 1) / steps.length) * 100;
+            if (progressFill) {
+                progressFill.style.width = `${progress}%`;
+            }
+            
+            if (progressSteps) {
+                progressSteps.forEach((step, index) => {
+                    if (index <= currentStep) {
+                        step.classList.add('active');
+                    } else {
+                        step.classList.remove('active');
+                    }
+                });
+            }
+        }
+        
+        function validateStep(step) {
+            const currentStepElement = steps[step];
+            const inputs = currentStepElement.querySelectorAll('input[required], select[required], textarea[required]');
+            let isValid = true;
+            
+            inputs.forEach(input => {
+                if (!input.value.trim()) {
+                    isValid = false;
+                    input.style.borderColor = '#e53e3e';
+                    
+                    // Add shake animation
+                    input.classList.add('shake');
+                    setTimeout(() => {
+                        input.classList.remove('shake');
+                    }, 500);
+                    
+                    // Reset border color after 2 seconds
+                    setTimeout(() => {
+                        input.style.borderColor = '';
+                    }, 2000);
+                }
+            });
+            
+            return isValid;
+        }
+        
+        // Add shake animation CSS
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                25% { transform: translateX(-5px); }
+                75% { transform: translateX(5px); }
+            }
+            .shake {
+                animation: shake 0.3s ease;
+            }
+        `;
+        document.head.appendChild(style);
+    });
+}
+
+function populateFormSelects() {
+    // Syrian cities
+    const syrianCities = [
+        "حلب", "دمشق", "حمص", "اللاذقية", "حماة", "طرطوس", "دير الزور",
+        "السويداء", "درعا", "القنيطرة", "ريف دمشق", "إدلب", "الحسكة", "الرقة"
+    ];
+    
+    // Populate city selects
+    const citySelects = document.querySelectorAll('#orderCity, #repairCity');
+    citySelects.forEach(select => {
+        if (select.children.length <= 1) { // Only if not already populated
+            syrianCities.forEach(city => {
+                const option = document.createElement('option');
+                option.value = city;
+                option.textContent = city;
+                select.appendChild(option);
+            });
+        }
+    });
+}
+
+function initFormMaps() {
+    const orderMapElement = document.getElementById('orderMap');
+    if (orderMapElement) {
+        initOrderMap();
+    }
+    
+    const repairMapElement = document.getElementById('repairMap');
+    if (repairMapElement) {
+        initRepairMap();
+    }
+}
+
+function initOrderMap() {
+    const orderMap = L.map('orderMap').setView([36.2021, 37.1343], 13);
+    
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(orderMap);
+    
+    let orderMarker;
+    
+    // Add click event to place marker
+    orderMap.on('click', function(e) {
+        const lat = e.latlng.lat;
+        const lng = e.latlng.lng;
+        
+        // Remove existing marker
+        if (orderMarker) {
+            orderMap.removeLayer(orderMarker);
+        }
+        
+        // Add new marker
+        orderMarker = L.marker([lat, lng]).addTo(orderMap);
+        
+        // Update coordinate inputs
+        document.getElementById('orderLat').value = lat.toFixed(6);
+        document.getElementById('orderLng').value = lng.toFixed(6);
+        
+        // Show success notification
+        showNotification('تم تحديد موقعك بنجاح!', 'success');
+    });
+    
+    // Adjust map on window resize
+    window.addEventListener('resize', function() {
+        setTimeout(() => {
+            orderMap.invalidateSize();
+        }, 100);
+    });
+}
+
+function initRepairMap() {
+    const repairMap = L.map('repairMap').setView([36.2021, 37.1343], 13);
+    
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(repairMap);
+    
+    let repairMarker;
+    
+    // Add click event to place marker
+    repairMap.on('click', function(e) {
+        const lat = e.latlng.lat;
+        const lng = e.latlng.lng;
+        
+        // Remove existing marker
+        if (repairMarker) {
+            repairMap.removeLayer(repairMarker);
+        }
+        
+        // Add new marker
+        repairMarker = L.marker([lat, lng]).addTo(repairMap);
+        
+        // Update coordinate inputs
+        document.getElementById('repairLat').value = lat.toFixed(6);
+        document.getElementById('repairLng').value = lng.toFixed(6);
+        
+        // Show success notification
+        showNotification('تم تحديد موقعك بنجاح!', 'success');
+    });
+    
+    // Adjust map on window resize
+    window.addEventListener('resize', function() {
+        setTimeout(() => {
+            repairMap.invalidateSize();
+        }, 100);
+    });
+}
+function updateSummary() {
+    // Order summary
+    if (document.getElementById('summaryName')) {
+        const name = document.getElementById('orderName')?.value || '-';
+        const phone = document.getElementById('orderPhone')?.value || '-';
+        const city = document.getElementById('orderCity')?.value || '-';
+        const district = document.getElementById('orderDistrict')?.value || '-';
+        const notes = document.getElementById('orderNotes')?.value || 'لا توجد ملاحظات';
+        
+        document.getElementById('summaryName').textContent = name;
+        document.getElementById('summaryPhone').textContent = phone;
+        document.getElementById('summaryCity').textContent = city;
+        document.getElementById('summaryDistrict').textContent = district;
+        document.getElementById('summaryNotes').textContent = notes;
+    }
+    
+    // Repair summary - تحديث هنا
+    if (document.getElementById('repairSummaryName')) {
+        const name = document.getElementById('repairName')?.value || '-';
+        const phone = document.getElementById('repairPhone')?.value || '-';
+        const city = document.getElementById('repairCity')?.value || '-';
+        const problemType = document.getElementById('problemType')?.value || '-';
+        const preferredTime = document.getElementById('preferredTime')?.value || '-';
+        const address = document.getElementById('repairAddress')?.value || '';
+        const problemDetails = document.getElementById('problemDetails')?.value || '';
+        
+        document.getElementById('repairSummaryName').textContent = name;
+        document.getElementById('repairSummaryPhone').textContent = phone;
+        document.getElementById('repairSummaryCity').textContent = city;
+        document.getElementById('repairSummaryProblem').textContent = problemType;
+        document.getElementById('repairSummaryTime').textContent = preferredTime;
+        
+        // تحديث رابط واتساب عند كل تحديث للملخص
+        generateRepairWhatsAppMessage();
+    }
+}
+
+function generateRepairWhatsAppMessage() {
+    const name = document.getElementById('repairName')?.value || '';
+    const phone = document.getElementById('repairPhone')?.value || '';
+    const city = document.getElementById('repairCity')?.value || '';
+    const problemType = document.getElementById('problemType')?.value || '';
+    const problemDetails = document.getElementById('problemDetails')?.value || '';
+    const preferredTime = document.getElementById('preferredTime')?.value || '';
+    const address = document.getElementById('repairAddress')?.value || '';
+    const lat = document.getElementById('repairLat')?.value || '';
+    const lng = document.getElementById('repairLng')?.value || '';
+    
+    // إنشاء رسالة واتساب
+    const message = `طلب خدمة صيانة ثلاجات شامية%0A%0A` +
+        `الاسم: ${name}%0A` +
+        `الهاتف: ${phone}%0A` +
+        `المحافظة: ${city}%0A` +
+        `العنوان: ${address}%0A` +
+        `نوع المشكلة: ${problemType}%0A` +
+        `تفاصيل المشكلة: ${problemDetails}%0A` +
+        `الوقت المفضل: ${preferredTime}%0A` +
+        `الموقع: ${lat && lng ? `https://maps.google.com/?q=${lat},${lng}` : 'غير محدد'}%0A` +
+        `التاريخ: ${new Date().toLocaleDateString('ar-SY')}%0A` +
+        `وقت الإرسال: ${new Date().toLocaleTimeString('ar-SY')}%0A%0A` +
+        `هذا الطلب تم إرساله من موقع شامية للثلاجات`;
+    
+    const whatsappBtn = document.getElementById('repairWhatsappBtn');
+    if (whatsappBtn) {
+        whatsappBtn.href = `https://wa.me/963936604658?text=${message}`;
+        whatsappBtn.setAttribute('target', '_blank');
+        whatsappBtn.setAttribute('rel', 'noopener noreferrer');
+    }
+}
+
+function initFormSubmissions() {
+    // Order form submission
+    const orderForm = document.getElementById('orderForm');
+    if (orderForm) {
+        orderForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (validateForm(orderForm)) {
+                // Show success message
+                const successMessage = document.getElementById('successMessage');
+                if (successMessage) {
+                    // تحديث رابط واتساب قبل العرض
+                    generateOrderWhatsAppMessage();
+                    
+                    // ثم عرض رسالة النجاح
+                    successMessage.style.display = 'block';
+                    orderForm.style.display = 'none';
+                }
+            }
+        });
+    }
+    
+    // Repair form submission
+    const repairForm = document.getElementById('repairForm');
+    if (repairForm) {
+        repairForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (validateForm(repairForm)) {
+                // Show success message
+                const successMessage = document.getElementById('repairSuccessMessage');
+                if (successMessage) {
+                    // تحديث رابط واتساب قبل العرض
+                    generateRepairWhatsAppMessage();
+                    
+                    // ثم عرض رسالة النجاح
+                    successMessage.style.display = 'block';
+                    repairForm.style.display = 'none';
+                    
+                    // إعادة تعيين النموذج (اختياري)
+                    repairForm.reset();
+                }
+            }
+        });
+    }
+}
+
+// إضافة مستمع حدث لحقول النموذج لتحديث رابط واتساب تلقائياً
+document.addEventListener('DOMContentLoaded', function() {
+    // إضافة مستمعات حدث للحقول في نموذج الصيانة
+    const repairFormFields = ['repairName', 'repairPhone', 'repairCity', 'problemType', 'problemDetails', 'preferredTime', 'repairAddress'];
+    
+    repairFormFields.forEach(fieldId => {
+        const field = document.getElementById(fieldId);
+        if (field) {
+            field.addEventListener('input', generateRepairWhatsAppMessage);
+            field.addEventListener('change', generateRepairWhatsAppMessage);
+        }
+    });
+    
+    // إضافة مستمع للحقول الجغرافية أيضاً
+    const latField = document.getElementById('repairLat');
+    const lngField = document.getElementById('repairLng');
+    if (latField) latField.addEventListener('input', generateRepairWhatsAppMessage);
+    if (lngField) lngField.addEventListener('input', generateRepairWhatsAppMessage);
+});
+function validateForm(form) {
+    const inputs = form.querySelectorAll('input[required], select[required], textarea[required]');
+    let isValid = true;
+    
+    inputs.forEach(input => {
+        if (!input.value.trim()) {
+            isValid = false;
+            input.style.borderColor = '#e53e3e';
+            
+            // Reset border color after 2 seconds
+            setTimeout(() => {
+                input.style.borderColor = '';
+            }, 2000);
+        }
+    });
+    
+    // Check terms agreement
+    const terms = form.querySelector('input[type="checkbox"][required]');
+    if (terms && !terms.checked) {
+        isValid = false;
+        showNotification('الرجاء الموافقة على الشروط والأحكام', 'error');
+    }
+    
+    if (!isValid) {
+        showNotification('الرجاء ملء جميع الحقول المطلوبة', 'error');
+    }
+    
+    return isValid;
+}
+
+function generateOrderWhatsAppMessage() {
+    const name = document.getElementById('orderName')?.value || '';
+    const phone = document.getElementById('orderPhone')?.value || '';
+    const city = document.getElementById('orderCity')?.value || '';
+    const district = document.getElementById('orderDistrict')?.value || '';
+    const address = document.getElementById('orderAddress')?.value || '';
+    const notes = document.getElementById('orderNotes')?.value || '';
+    const lat = document.getElementById('orderLat')?.value || '';
+    const lng = document.getElementById('orderLng')?.value || '';
+    
+    // Get product from URL or page
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = urlParams.get('product');
+    let productName = 'ثلاجة شامية';
+    
+    if (productId) {
+        const productDetails = {
+            '1': 'ثلاجة شامية 70 سنتيمتر',
+            '2': 'ثلاجة شامية 80 سنتيمتر',
+            '3': 'ثلاجة شامية 80 سنتيمتر',
+            '4': 'ثلاجة شامية 65 سبور',
+            '5': 'ثلاجة شامية 65 سبور',
+            '6': 'ثلاجة شامية 65 سبور',
+            '7': 'ثلاجة شامية 70 سنتيمتر',
+            '8': 'ثلاجة شامية 80 سنتيمتر',
+            '9': 'ثلاجة شامية 70 سنتيمتر',
+            '10': 'ثلاجة شامية 70 سنتيمتر',
+            '11': 'فريزر شامية التجاري الواسع'
+        };
+        productName = productDetails[productId] || productName;
+    }
+    
+    // Removed emojis from the message
+    const message = `طلب شراء ثلاجة شامية%0A%0A` +
+        `الاسم: ${name}%0A` +
+        `الهاتف: ${phone}%0A` +
+        `المحافظة: ${city}%0A` +
+        `المنطقة: ${district}%0A` +
+        `العنوان: ${address}%0A` +
+        `المنتج: ${productName}%0A` +
+        `الموقع: ${lat && lng ? `https://maps.google.com/?q=${lat},${lng}` : 'غير محدد'}%0A` +
+        `ملاحظات: ${notes || 'لا توجد'}%0A` +
+        `التاريخ: ${new Date().toLocaleDateString('ar-SY')}%0A` +
+        `الوقت: ${new Date().toLocaleTimeString('ar-SY')}%0A%0A` +
+        `هذا الطلب تم إرساله من موقع شامية للثلاجات`;
+    
+    const whatsappBtn = document.getElementById('whatsappBtn');
+    if (whatsappBtn) {
+        whatsappBtn.href = `https://wa.me/963936604658?text=${message}`;
+        // Ensure the button has target="_blank"
+        whatsappBtn.setAttribute('target', '_blank');
+    }
+}
+
+function generateRepairWhatsAppMessage() {
+    const name = document.getElementById('repairName')?.value || '';
+    const phone = document.getElementById('repairPhone')?.value || '';
+    const city = document.getElementById('repairCity')?.value || '';
+    const problemType = document.getElementById('problemType')?.value || '';
+    const problemDetails = document.getElementById('problemDetails')?.value || '';
+    const preferredTime = document.getElementById('preferredTime')?.value || '';
+    const address = document.getElementById('repairAddress')?.value || '';
+    const lat = document.getElementById('repairLat')?.value || '';
+    const lng = document.getElementById('repairLng')?.value || '';
+    
+    // Removed emojis from the message
+    const message = `طلب خدمة صيانة ثلاجات شامية%0A%0A` +
+        `الاسم: ${name}%0A` +
+        `الهاتف: ${phone}%0A` +
+        `المحافظة: ${city}%0A` +
+        `العنوان: ${address}%0A` +
+        `نوع المشكلة: ${problemType}%0A` +
+        `تفاصيل المشكلة: ${problemDetails}%0A` +
+        `الوقت المفضل: ${preferredTime}%0A` +
+        `الموقع: ${lat && lng ? `https://maps.google.com/?q=${lat},${lng}` : 'غير محدد'}%0A` +
+        `التاريخ: ${new Date().toLocaleDateString('ar-SY')}%0A` +
+        `وقت الإرسال: ${new Date().toLocaleTimeString('ar-SY')}%0A%0A` +
+        `هذا الطلب تم إرساله من موقع شامية للثلاجات`;
+    
+    const whatsappBtn = document.getElementById('repairWhatsappBtn');
+    if (whatsappBtn) {
+        whatsappBtn.href = `https://wa.me/963936604658?text=${message}`;
+        // Ensure the button has target="_blank"
+        whatsappBtn.setAttribute('target', '_blank');
     }
 }
 
@@ -786,30 +1120,6 @@ function initBackToTop() {
     });
 }
 
-// Form validation
-function validateForm(form) {
-    const inputs = form.querySelectorAll('input[required], select[required], textarea[required]');
-    let isValid = true;
-    
-    inputs.forEach(input => {
-        if (!input.value.trim()) {
-            isValid = false;
-            input.style.borderColor = '#e53e3e';
-            
-            // Reset border color after 2 seconds
-            setTimeout(() => {
-                input.style.borderColor = '';
-            }, 2000);
-        }
-    });
-    
-    if (!isValid) {
-        showNotification('الرجاء ملء جميع الحقول المطلوبة', 'error');
-    }
-    
-    return isValid;
-}
-
 // Show notification
 function showNotification(message, type) {
     // Remove existing notification
@@ -873,566 +1183,3 @@ function showNotification(message, type) {
     }, 4000);
 }
 
-// Helper function to get product from URL
-function getProductFromURL() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const productId = urlParams.get('product');
-    
-    if (productId) {
-        const productNames = {
-            '1': 'ثلاجة شامية ١٢ قدم',
-            '2': 'ثلاجة شامية ١٤ قدم',
-            '3': 'ثلاجة شامية ١٦ قدم',
-            '4': 'ثلاجة شامية ١٨ قدم',
-            '5': 'ثلاجة شامية ٢٠ قدم',
-            '6': 'ثلاجة شامية ٢٢ قدم',
-            '7': 'ثلاجة شامية ٢٤ قدم',
-            '8': 'ثلاجة شامية ١٠ قدم',
-            '9': 'ثلاجة شامية ٨ قدم',
-            '10': 'ثلاجة شامية التجارية',
-            '11': 'ثلاجة شامية الذكية'
-        };
-        
-        return productNames[productId] || `ثلاجة شامية ${productId}`;
-    }
-    
-    return null;
-}
-
-// Form handling for order and repair pages
-function initFormPages() {
-    // Check if we're on a form page
-    if (document.querySelector('.form-section')) {
-        initMultiStepForms();
-        populateFormSelects();
-        initFormMaps();
-    }
-}
-
-// Initialize multi-step forms
-function initMultiStepForms() {
-    const forms = document.querySelectorAll('.form-content');
-    
-    forms.forEach(form => {
-        const steps = form.querySelectorAll('.form-step');
-        const nextBtns = form.querySelectorAll('.btn-next');
-        const prevBtns = form.querySelectorAll('.btn-prev');
-        const progressFill = form.closest('.form-container').querySelector('.progress-fill');
-        const progressSteps = form.closest('.form-container').querySelectorAll('.progress-step');
-        
-        // Set current step
-        let currentStep = 0;
-        
-        // Show first step
-        showStep(currentStep);
-        
-        // Next button click
-        nextBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                if (validateStep(currentStep)) {
-                    currentStep++;
-                    updateProgress();
-                    showStep(currentStep);
-                }
-            });
-        });
-        
-        // Previous button click
-        prevBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                currentStep--;
-                updateProgress();
-                showStep(currentStep);
-            });
-        });
-        
-        // Edit button in order summary
-        const editOrderBtn = document.getElementById('editOrderBtn');
-        if (editOrderBtn) {
-            editOrderBtn.addEventListener('click', function() {
-                currentStep = 0;
-                updateProgress();
-                showStep(currentStep);
-            });
-        }
-        
-        function showStep(step) {
-            // Hide all steps
-            steps.forEach(step => step.classList.remove('active'));
-            
-            // Show current step
-            if (steps[step]) {
-                steps[step].classList.add('active');
-                
-                // Update summary if on last step
-                if (step === 2) {
-                    updateOrderSummary();
-                }
-            }
-        }
-        
-        function updateProgress() {
-            const progress = ((currentStep + 1) / steps.length) * 100;
-            if (progressFill) {
-                progressFill.style.width = `${progress}%`;
-            }
-            
-            // Update progress steps
-            progressSteps.forEach((step, index) => {
-                if (index <= currentStep) {
-                    step.classList.add('active');
-                } else {
-                    step.classList.remove('active');
-                }
-            });
-        }
-        
-        function validateStep(step) {
-            const currentStepElement = steps[step];
-            const inputs = currentStepElement.querySelectorAll('input[required], select[required], textarea[required]');
-            let isValid = true;
-            
-            inputs.forEach(input => {
-                if (!input.value.trim()) {
-                    isValid = false;
-                    input.style.borderColor = '#e53e3e';
-                    
-                    // Add shake animation
-                    input.classList.add('shake');
-                    setTimeout(() => {
-                        input.classList.remove('shake');
-                    }, 500);
-                    
-                    // Reset border color after 2 seconds
-                    setTimeout(() => {
-                        input.style.borderColor = '';
-                    }, 2000);
-                }
-            });
-            
-            return isValid;
-        }
-        
-        // Add shake animation CSS
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes shake {
-                0%, 100% { transform: translateX(0); }
-                25% { transform: translateX(-5px); }
-                75% { transform: translateX(5px); }
-            }
-            .shake {
-                animation: shake 0.3s ease;
-            }
-        `;
-        document.head.appendChild(style);
-    });
-}
-
-// Populate form selects
-function populateFormSelects() {
-    // Syrian cities
-    const syrianCities = [
-        "دمشق", "حلب", "حمص", "اللاذقية", "حماة", "طرطوس", "دير الزور",
-        "السويداء", "درعا", "القنيطرة", "ريف دمشق", "إدلب", "الحسكة", "الرقة"
-    ];
-    
-    // Populate city selects
-    const citySelects = document.querySelectorAll('#orderCity, #repairCity');
-    citySelects.forEach(select => {
-        syrianCities.forEach(city => {
-            const option = document.createElement('option');
-            option.value = city;
-            option.textContent = city;
-            select.appendChild(option);
-        });
-    });
-    
-    // Populate product selects
-    const productSelects = document.querySelectorAll('#orderProduct, #fridgeModel');
-    productSelects.forEach(select => {
-        const products = [
-            { id: 1, name: "ثلاجة شامية ١٢ قدم" },
-            { id: 2, name: "ثلاجة شامية ١٤ قدم" },
-            { id: 3, name: "ثلاجة شامية ١٦ قدم" },
-            { id: 4, name: "ثلاجة شامية ١٨ قدم" },
-            { id: 5, name: "ثلاجة شامية ٢٠ قدم" },
-            { id: 6, name: "ثلاجة شامية ٢٢ قدم" },
-            { id: 7, name: "ثلاجة شامية ٢٤ قدم" },
-            { id: 8, name: "ثلاجة شامية ١٠ قدم" },
-            { id: 9, name: "ثلاجة شامية ٨ قدم" },
-            { id: 10, name: "ثلاجة شامية التجارية" },
-            { id: 11, name: "ثلاجة شامية الذكية" }
-        ];
-        
-        products.forEach(product => {
-            const option = document.createElement('option');
-            option.value = product.id;
-            option.textContent = product.name;
-            select.appendChild(option);
-        });
-    });
-}
-
-// Initialize form maps
-function initFormMaps() {
-    // Order page map
-    const orderMapElement = document.getElementById('orderMap');
-    if (orderMapElement) {
-        initOrderMap();
-    }
-    
-    // Repair page map
-    const repairMapElement = document.getElementById('repairMap');
-    if (repairMapElement) {
-        initRepairMap();
-    }
-}
-
-function initOrderMap() {
-    const orderMap = L.map('orderMap').setView([35.0000, 38.0000], 7);
-    
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; OpenStreetMap contributors'
-    }).addTo(orderMap);
-    
-    let orderMarker;
-    
-    // Add click event to place marker
-    orderMap.on('click', function(e) {
-        const lat = e.latlng.lat;
-        const lng = e.latlng.lng;
-        
-        // Remove existing marker
-        if (orderMarker) {
-            orderMap.removeLayer(orderMarker);
-        }
-        
-        // Add new marker
-        orderMarker = L.marker([lat, lng]).addTo(orderMap);
-        
-        // Update coordinate inputs
-        document.getElementById('orderLat').value = lat.toFixed(6);
-        document.getElementById('orderLng').value = lng.toFixed(6);
-        
-        // Show success notification
-        showFormNotification('تم تحديد موقعك بنجاح!', 'success');
-    });
-    
-    // Adjust map on window resize
-    window.addEventListener('resize', function() {
-        setTimeout(() => {
-            orderMap.invalidateSize();
-        }, 100);
-    });
-}
-
-function initRepairMap() {
-    const repairMap = L.map('repairMap').setView([35.0000, 38.0000], 7);
-    
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; OpenStreetMap contributors'
-    }).addTo(repairMap);
-    
-    let repairMarker;
-    
-    // Add click event to place marker
-    repairMap.on('click', function(e) {
-        const lat = e.latlng.lat;
-        const lng = e.latlng.lng;
-        
-        // Remove existing marker
-        if (repairMarker) {
-            repairMap.removeLayer(repairMarker);
-        }
-        
-        // Add new marker
-        repairMarker = L.marker([lat, lng]).addTo(repairMap);
-        
-        // Update coordinate inputs
-        document.getElementById('repairLat').value = lat.toFixed(6);
-        document.getElementById('repairLng').value = lng.toFixed(6);
-        
-        // Show success notification
-        showFormNotification('تم تحديد موقعك بنجاح!', 'success');
-    });
-    
-    // Adjust map on window resize
-    window.addEventListener('resize', function() {
-        setTimeout(() => {
-            repairMap.invalidateSize();
-        }, 100);
-    });
-}
-
-// Update order summary
-function updateOrderSummary() {
-    // Get form values
-    const name = document.getElementById('orderName')?.value || '-';
-    const phone = document.getElementById('orderPhone')?.value || '-';
-    const city = document.getElementById('orderCity')?.value || '-';
-    const district = document.getElementById('orderDistrict')?.value || '-';
-    const productId = document.getElementById('orderProduct')?.value;
-    const tubeType = document.querySelector('input[name="tubeType"]:checked')?.value || '-';
-    const notes = document.getElementById('orderNotes')?.value || 'لا توجد ملاحظات';
-    
-    // Get product name
-    let productName = '-';
-    if (productId) {
-        const productSelect = document.getElementById('orderProduct');
-        productName = productSelect.options[productSelect.selectedIndex].text;
-    }
-    
-    // Update summary display
-    const summaryElements = {
-        'summaryName': name,
-        'summaryPhone': phone,
-        'summaryCity': city,
-        'summaryDistrict': district,
-        'summaryProduct': productName,
-        'summaryTube': tubeType,
-        'summaryNotes': notes
-    };
-    
-    Object.entries(summaryElements).forEach(([id, value]) => {
-        const element = document.getElementById(id);
-        if (element) {
-            element.textContent = value;
-        }
-    });
-}
-
-// Update repair summary
-function updateRepairSummary() {
-    // Get form values
-    const name = document.getElementById('repairName')?.value || '-';
-    const phone = document.getElementById('repairPhone')?.value || '-';
-    const city = document.getElementById('repairCity')?.value || '-';
-    const modelId = document.getElementById('fridgeModel')?.value;
-    const problemType = document.getElementById('problemType')?.value || '-';
-    const preferredTime = document.getElementById('preferredTime')?.value || '-';
-    
-    // Get model name
-    let modelName = '-';
-    if (modelId) {
-        const modelSelect = document.getElementById('fridgeModel');
-        modelName = modelSelect.options[modelSelect.selectedIndex].text;
-    }
-    
-    // Update summary display
-    const summaryElements = {
-        'repairSummaryName': name,
-        'repairSummaryPhone': phone,
-        'repairSummaryCity': city,
-        'repairSummaryModel': modelName,
-        'repairSummaryProblem': problemType,
-        'repairSummaryTime': preferredTime
-    };
-    
-    Object.entries(summaryElements).forEach(([id, value]) => {
-        const element = document.getElementById(id);
-        if (element) {
-            element.textContent = value;
-        }
-    });
-}
-
-// Form submission
-function initFormSubmissions() {
-    // Order form submission
-    const orderForm = document.getElementById('orderForm');
-    if (orderForm) {
-        orderForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Show success message
-            const successMessage = document.getElementById('successMessage');
-            if (successMessage) {
-                successMessage.style.display = 'block';
-                orderForm.style.display = 'none';
-                
-                // Generate WhatsApp message
-                generateOrderWhatsAppMessage();
-            }
-        });
-    }
-    
-    // Repair form submission
-    const repairForm = document.getElementById('repairForm');
-    if (repairForm) {
-        repairForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Show success message
-            const successMessage = document.getElementById('repairSuccessMessage');
-            if (successMessage) {
-                successMessage.style.display = 'block';
-                repairForm.style.display = 'none';
-                
-                // Generate WhatsApp message
-                generateRepairWhatsAppMessage();
-            }
-        });
-    }
-}
-
-// Generate WhatsApp message for order
-function generateOrderWhatsAppMessage() {
-    const name = document.getElementById('orderName')?.value || '';
-    const phone = document.getElementById('orderPhone')?.value || '';
-    const city = document.getElementById('orderCity')?.value || '';
-    const district = document.getElementById('orderDistrict')?.value || '';
-    const address = document.getElementById('orderAddress')?.value || '';
-    const productId = document.getElementById('orderProduct')?.value;
-    const tubeType = document.querySelector('input[name="tubeType"]:checked')?.value || '';
-    const notes = document.getElementById('orderNotes')?.value || '';
-    const lat = document.getElementById('orderLat')?.value || '';
-    const lng = document.getElementById('orderLng')?.value || '';
-    
-    let productName = '';
-    if (productId) {
-        const productSelect = document.getElementById('orderProduct');
-        productName = productSelect.options[productSelect.selectedIndex].text;
-    }
-    
-    const message = `📋 *طلب شراء ثلاجة شامية*%0A%0A`
-        + `👤 *الاسم:* ${name}%0A`
-        + `📱 *الهاتف:* ${phone}%0A`
-        + `🏙️ *المحافظة:* ${city}%0A`
-        + `📍 *المنطقة:* ${district}%0A`
-        + `🏠 *العنوان:* ${address}%0A`
-        + `🛒 *المنتج:* ${productName}%0A`
-        + `🔧 *نوع الأنابيب:* ${tubeType}%0A`
-        + `🗺️ *الموقع:* ${lat && lng ? `https://maps.google.com/?q=${lat},${lng}` : 'غير محدد'}%0A`
-        + `📝 *ملاحظات:* ${notes || 'لا توجد'}%0A`
-        + `📅 *التاريخ:* ${new Date().toLocaleDateString('ar-SY')}%0A`
-        + `⏰ *الوقت:* ${new Date().toLocaleTimeString('ar-SY')}%0A%0A`
-        + `_هذا الطلب تم إرساله من موقع شامية للثلاجات_`;
-    
-    const whatsappBtn = document.getElementById('whatsappBtn');
-    if (whatsappBtn) {
-        whatsappBtn.href = `https://wa.me/963111111111?text=${message}`;
-    }
-}
-
-// Generate WhatsApp message for repair
-function generateRepairWhatsAppMessage() {
-    const name = document.getElementById('repairName')?.value || '';
-    const phone = document.getElementById('repairPhone')?.value || '';
-    const city = document.getElementById('repairCity')?.value || '';
-    const modelId = document.getElementById('fridgeModel')?.value;
-    const problemType = document.getElementById('problemType')?.value || '';
-    const problemDetails = document.getElementById('problemDetails')?.value || '';
-    const preferredTime = document.getElementById('preferredTime')?.value || '';
-    const address = document.getElementById('repairAddress')?.value || '';
-    const lat = document.getElementById('repairLat')?.value || '';
-    const lng = document.getElementById('repairLng')?.value || '';
-    
-    let modelName = '';
-    if (modelId) {
-        const modelSelect = document.getElementById('fridgeModel');
-        modelName = modelSelect.options[modelSelect.selectedIndex].text;
-    }
-    
-    const message = `🔧 *طلب خدمة صيانة ثلاجات شامية*%0A%0A`
-        + `👤 *الاسم:* ${name}%0A`
-        + `📱 *الهاتف:* ${phone}%0A`
-        + `🏙️ *المحافظة:* ${city}%0A`
-        + `🏠 *العنوان:* ${address}%0A`
-        + `❄️ *موديل الثلاجة:* ${modelName}%0A`
-        + `⚠️ *نوع المشكلة:* ${problemType}%0A`
-        + `📋 *تفاصيل المشكلة:* ${problemDetails}%0A`
-        + `⏰ *الوقت المفضل:* ${preferredTime}%0A`
-        + `🗺️ *الموقع:* ${lat && lng ? `https://maps.google.com/?q=${lat},${lng}` : 'غير محدد'}%0A`
-        + `📅 *التاريخ:* ${new Date().toLocaleDateString('ar-SY')}%0A`
-        + `🕐 *وقت الإرسال:* ${new Date().toLocaleTimeString('ar-SY')}%0A%0A`
-        + `_هذا الطلب تم إرساله من موقع شامية للثلاجات_`;
-    
-    const whatsappBtn = document.getElementById('repairWhatsappBtn');
-    if (whatsappBtn) {
-        whatsappBtn.href = `https://wa.me/963111111111?text=${message}`;
-    }
-}
-
-// Show form notification
-function showFormNotification(message, type) {
-    const notification = document.createElement('div');
-    notification.className = `form-notification form-notification-${type}`;
-    notification.innerHTML = `
-        <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
-        <span>${message}</span>
-    `;
-    
-    // Add styles
-    notification.style.cssText = `
-        position: fixed;
-        top: 100px;
-        right: 20px;
-        background: ${type === 'success' ? '#38a169' : '#e53e3e'};
-        color: white;
-        padding: 12px 20px;
-        border-radius: 8px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        z-index: 9999;
-        animation: slideInRight 0.3s ease, fadeOut 0.3s ease 2.5s forwards;
-        max-width: 300px;
-    `;
-    
-    document.body.appendChild(notification);
-    
-    // Remove after 3 seconds
-    setTimeout(() => {
-        notification.remove();
-    }, 3000);
-}
-
-// Update the initComponents function to include form pages
-// Add this line inside initComponents function:
-// initFormPages();
-// initFormSubmissions();
-
-// And update the initComponents function to look like this:
-function initComponents() {
-    // Initialize navigation
-    initNavigation();
-    
-    // Initialize preloader
-    initPreloader();
-    
-    // Load products on homepage
-    if (document.querySelector('.products-grid')) {
-        loadProducts();
-        initProductFilter();
-    }
-    
-    // Initialize map on contact page
-    if (document.getElementById('map')) {
-        initMap();
-    }
-    
-    // Initialize form functionality on order/repair pages
-    if (document.querySelector('.form-section')) {
-        initFormPages();
-        initFormSubmissions();
-    }
-    
-    // Initialize product page if needed
-    if (document.querySelector('.product-page')) {
-        initProductPage();
-    }
-    
-    // Initialize lazy loading for images
-    initLazyLoading();
-    
-    // Initialize scroll animations
-    initScrollAnimations();
-    
-    // Initialize back to top button
-    initBackToTop();
-    
-    // Initialize hero image animation
-    initHeroAnimation();
-}
