@@ -1256,6 +1256,402 @@ h1, h2, h3, h4, h5, h6 {
     transform: translateY(-2px);
 }
 
+/* ===== Gallery Section ===== */
+.gallery-section {
+    margin-top: var(--space-2xl);
+    background: var(--white);
+    border-radius: var(--radius-xl);
+    padding: var(--space-xl);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--light-gray);
+}
+
+.gallery-container {
+    margin-top: var(--space-xl);
+}
+
+.gallery-slider {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    margin-bottom: var(--space-xl);
+}
+
+.gallerySwiper {
+    width: 100%;
+    height: 400px;
+}
+
+.gallery-item {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: var(--radius);
+}
+
+    .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+
+    .gallery-item:hover img {
+        transform: scale(1.05);
+    }
+
+.gallery-overlay {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    color: var(--white);
+    padding: var(--space-lg);
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover .gallery-overlay {
+    transform: translateY(0);
+}
+
+.gallery-overlay p {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* Swiper Navigation */
+/* Swiper Navigation */
+.gallery-next,
+.gallery-prev {
+    color: var(--primary);
+    background: transparent;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    transition: all var(--transition);
+}
+
+    .gallery-next:after,
+    .gallery-prev:after {
+        font-size: 1rem;
+        font-weight: bold;
+    }
+
+    .gallery-next:hover,
+    .gallery-prev:hover {
+        color: var(--primary-dark);
+        transform: scale(1.1);
+    }
+
+.gallery-pagination {
+    position: relative;
+    margin-top: var(--space);
+}
+
+    .gallery-pagination .swiper-pagination-bullet {
+        width: 12px;
+        height: 12px;
+        background: var(--gray);
+        opacity: 0.7;
+        transition: all var(--transition);
+    }
+
+    .gallery-pagination .swiper-pagination-bullet-active {
+        background: var(--primary);
+        opacity: 1;
+        transform: scale(1.2);
+    }
+/* Custom Manufacturing Section */
+.custom-manufacturing {
+    background: linear-gradient(135deg, var(--light) 0%, #f0f9ff 100%);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    border: 2px solid var(--primary-light);
+}
+
+.manufacturing-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space);
+    margin-bottom: var(--space-lg);
+    padding-bottom: var(--space);
+    border-bottom: 2px solid var(--primary);
+}
+
+    .manufacturing-header i {
+        color: var(--primary);
+        font-size: 2rem;
+    }
+
+    .manufacturing-header h3 {
+        margin: 0;
+        font-size: 1.75rem;
+        color: var(--dark);
+    }
+
+.manufacturing-description {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: var(--dark-gray);
+    margin-bottom: var(--space-xl);
+    text-align: center;
+}
+
+    .manufacturing-description strong {
+        color: var(--primary);
+        display: block;
+        margin-bottom: var(--space-sm);
+    }
+
+.manufacturing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-lg);
+    margin-bottom: var(--space-xl);
+}
+
+.manufacturing-item {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: var(--space-lg);
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: all var(--transition);
+    border-top: 4px solid var(--primary);
+}
+
+    .manufacturing-item:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-lg);
+    }
+
+.manufacturing-icon {
+    width: 64px;
+    height: 64px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--space);
+    color: var(--white);
+    font-size: 1.5rem;
+}
+
+.manufacturing-item h4 {
+    font-size: 1.25rem;
+    margin-bottom: var(--space-sm);
+    color: var(--dark);
+}
+
+.manufacturing-item p {
+    color: var(--dark-gray);
+    font-size: 0.875rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.manufacturing-features {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: var(--space-xl);
+    margin-bottom: var(--space-xl);
+    box-shadow: var(--shadow);
+}
+
+    .manufacturing-features h4 {
+        font-size: 1.25rem;
+        margin-bottom: var(--space);
+        color: var(--dark);
+        display: flex;
+        align-items: center;
+        gap: var(--space-sm);
+    }
+
+        .manufacturing-features h4 i {
+            color: var(--primary);
+        }
+
+    .manufacturing-features ul {
+        list-style: none;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: var(--space-sm);
+    }
+
+    .manufacturing-features li {
+        padding: var(--space-sm) 0;
+        color: var(--dark-gray);
+        display: flex;
+        align-items: center;
+        gap: var(--space-sm);
+        font-size: 0.9rem;
+    }
+
+        .manufacturing-features li i {
+            color: var(--secondary);
+            font-size: 0.875rem;
+        }
+
+.manufacturing-cta {
+    text-align: center;
+    padding: var(--space-xl);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    border-radius: var(--radius-lg);
+    color: var(--white);
+}
+
+    .manufacturing-cta p {
+        font-size: 1.125rem;
+        margin-bottom: var(--space);
+        line-height: 1.6;
+    }
+
+    .manufacturing-cta .btn {
+        background: var(--white);
+        color: var(--primary);
+        font-weight: 600;
+        padding: var(--space) var(--space-xl);
+    }
+
+        .manufacturing-cta .btn:hover {
+            background: var(--light-gray);
+            transform: translateY(-2px);
+        }
+
+/* Responsive Gallery */
+@media (max-width: 991px) {
+    .gallerySwiper {
+        height: 350px;
+    }
+
+    .manufacturing-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .manufacturing-features ul {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 767px) {
+    .gallery-section {
+        padding: var(--space);
+    }
+
+    .gallerySwiper {
+        height: 300px;
+    }
+
+    .manufacturing-header {
+        flex-direction: column;
+        text-align: center;
+        gap: var(--space-sm);
+    }
+
+    .manufacturing-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .custom-manufacturing {
+        padding: var(--space);
+    }
+
+    .manufacturing-features {
+        padding: var(--space);
+    }
+
+    .manufacturing-cta {
+        padding: var(--space);
+    }
+
+    .gallery-next,
+    .gallery-prev {
+        width: 36px;
+        height: 36px;
+    }
+
+        .gallery-next:after,
+        .gallery-prev:after {
+            font-size: 0.875rem;
+        }
+}
+
+@media (max-width: 575px) {
+    .gallerySwiper {
+        height: 250px;
+    }
+
+    .manufacturing-header h3 {
+        font-size: 1.5rem;
+    }
+
+    .manufacturing-description {
+        font-size: 1rem;
+    }
+
+    .manufacturing-item {
+        padding: var(--space);
+    }
+
+    .manufacturing-icon {
+        width: 56px;
+        height: 56px;
+        font-size: 1.25rem;
+    }
+
+    .manufacturing-item h4 {
+        font-size: 1.125rem;
+    }
+
+    .manufacturing-features h4 {
+        font-size: 1.125rem;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .gallery-pagination .swiper-pagination-bullet {
+        width: 8px;
+        height: 8px;
+    }
+}
+
+@media (max-width: 320px) {
+    .gallerySwiper {
+        height: 200px;
+    }
+
+    .manufacturing-cta p {
+        font-size: 1rem;
+    }
+
+    .manufacturing-cta .btn {
+        padding: var(--space-sm) var(--space);
+        font-size: 0.875rem;
+    }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) and (pointer: coarse) {
+    .gallery-overlay {
+        transform: translateY(0);
+        background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+    }
+
+    .gallery-item img {
+        transform: none;
+    }
+
+    .manufacturing-item:hover {
+        transform: none;
+    }
+}
 /* ===== Responsive Design ===== */
 
 /* Large Desktop (1200px and up) */
@@ -2601,3 +2997,4 @@ h1, h2, h3, h4, h5, h6 {
         text-align: right;
     }
 }
+

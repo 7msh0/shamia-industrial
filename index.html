@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="img/logo.jpg">
+    <!-- Swiper CSS for gallery -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
 <body>
     <!-- Preloader -->
@@ -35,7 +37,7 @@
                     <img src="img/logo-with-name.png" alt="شامية للثلاجات" class="logo-img">
                 </a>
             </div>
-            
+
             <div class="nav-menu" id="navMenu">
                 <ul class="nav-list">
                     <li class="nav-item"><a href="index.html" class="nav-link active">الرئيسية</a></li>
@@ -45,7 +47,7 @@
                     <li class="nav-item"><a href="#contact" class="nav-link">اتصل بنا</a></li>
                 </ul>
             </div>
-            
+
             <div class="nav-actions">
                 <a href="tel:+963936604658" class="nav-phone">
                     <i class="fas fa-phone"></i>
@@ -68,16 +70,16 @@
                     <span>صناعة سورية</span>
                     <!--<span class="badge-year">منذ 1995</span>-->
                 </div>
-                
+
                 <h1 class="hero-title">
                     <span class="hero-title-line">ثلاجات <span class="highlight">شامية</span></span>
                     <span class="hero-title-line">جودة لا تضاهى</span>
                 </h1>
-                
+
                 <p class="hero-description">
-                     نوفر لكم أفضل الثلاجات المنزلية والتجارية بمواصفات عالمية وأسعار تنافسية، مع ضمان و كفالة وخدمة صيانة على مدار الساعة في جميع المحافظات السورية.
+                    نوفر لكم أفضل الثلاجات المنزلية والتجارية بمواصفات عالمية وأسعار تنافسية، مع ضمان و كفالة وخدمة صيانة على مدار الساعة في جميع المحافظات السورية.
                 </p>
-                
+
                 <div class="hero-actions">
                     <a href="#products" class="btn btn-primary btn-hero">
                         <i class="fas fa-shopping-cart"></i>
@@ -88,7 +90,7 @@
                         <span>خدمات الصيانة</span>
                     </a>
                 </div>
-                
+
                 <div class="hero-features">
                     <div class="hero-feature">
                         <div class="feature-icon">
@@ -99,7 +101,7 @@
                             <span class="feature-subtitle">عالي المستوى</span>
                         </div>
                     </div>
-                    
+
                     <div class="hero-feature">
                         <div class="feature-icon">
                             <i class="fas fa-leaf"></i>
@@ -109,7 +111,7 @@
                             <span class="feature-subtitle">صديق للبيئة</span>
                         </div>
                     </div>
-                    
+
                     <div class="hero-feature">
                         <div class="feature-icon">
                             <i class="fas fa-headset"></i>
@@ -121,7 +123,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="hero-image">
                 <div class="image-container">
                     <img src="product/1.png" alt="ثلاجة شامية متميزة" class="hero-fridge" id="heroFridge">
@@ -129,7 +131,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="hero-scroll">
             <a href="#products" class="scroll-down">
                 <i class="fas fa-chevron-down"></i>
@@ -145,22 +147,142 @@
                 <h2 class="section-title">منتجاتنا المميزة</h2>
                 <p class="section-subtitle">اختر من مجموعة واسعة من الثلاجات المنزلية والتجارية التي تناسب احتياجاتك</p>
             </div>
-            
+
             <div class="products-filter">
                 <button class="filter-btn active" data-filter="all">الكل</button>
                 <button class="filter-btn" data-filter="home">ثلاجات منزلية</button>
                 <button class="filter-btn" data-filter="commercial">ثلاجات تجارية</button>
             </div>
-            
+
             <div class="products-grid" id="productsGrid">
                 <!-- Products loaded by JavaScript -->
             </div>
-            
-            <div class="section-footer">
-                <a href="#contact" class="btn btn-outline">
-                    <i class="fas fa-question-circle"></i>
-                    <span>استفسر عن منتج معين</span>
-                </a>
+
+            <!-- Gallery & Custom Manufacturing Section -->
+            <div class="gallery-section">
+                <div class="section-header">
+                    <h2 class="section-title">معرض <span class="highlight">شامية</span></h2>
+                    <p class="section-subtitle">تصنيع الثلاجات والبرادات الصناعية حسب الطلب</p>
+                </div>
+
+                <!-- Image Gallery Slider -->
+                <div class="gallery-container">
+                    <div class="gallery-slider">
+                        <div class="swiper gallerySwiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="gallery-item">
+                                        <img src="product/test1.jpeg" alt="ثلاجات شامية صناعة سورية" loading="lazy">
+                                        <div class="gallery-overlay">
+                                            <p>برادات تجارية للمطاعم والفنادق والمحلات</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="gallery-item">
+                                        <img src="product/test2.jpeg" alt="ثلاجات تجارية شامية" loading="lazy">
+                                        <div class="gallery-overlay">
+                                            <p>برادات البان</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="gallery-item">
+                                        <img src="product/test3.jpeg" alt="برادات صناعية شامية" loading="lazy">
+                                        <div class="gallery-overlay">
+                                            <p>برادات ماء حسب الطلب</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="gallery-item">
+                                        <img src="product/1.png" alt="ثلاجات منزلية شامية" loading="lazy">
+                                        <div class="gallery-overlay">
+                                            <p>ثلاجات منزلية عالية الجودة بتصاميم عصرية</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Navigation Buttons -->
+                            <div class="swiper-button-next gallery-next"></div>
+                            <div class="swiper-button-prev gallery-prev"></div>
+
+                            <!-- Pagination Dots -->
+                            <div class="swiper-pagination gallery-pagination"></div>
+                        </div>
+                    </div>
+
+                    <!-- Custom Manufacturing Information -->
+                    <div class="custom-manufacturing">
+                        <div class="manufacturing-header">
+                            <i class="fas fa-industry"></i>
+                            <h3>تصنيع حسب الطلب</h3>
+                        </div>
+
+                        <div class="manufacturing-content">
+                            <p class="manufacturing-description">
+                                <strong>نقوم بتصنيع البرادات الصناعية حسب الطلب من المقاس 70 سم إلى 200 سم</strong><br>
+                                نقدم حلولاً متكاملة للتبريد الصناعي للعديد من الاستخدامات:
+                            </p>
+
+                            <div class="manufacturing-grid">
+                                <div class="manufacturing-item">
+                                    <div class="manufacturing-icon">
+                                        <i class="fas fa-wine-bottle"></i>
+                                    </div>
+                                    <h4>برادات الألبان</h4>
+                                    <p>تصميم خاص للحفاظ على درجة حرارة مثالية للألبان ومشتقاتها</p>
+                                </div>
+
+                                <div class="manufacturing-item">
+                                    <div class="manufacturing-icon">
+                                        <i class="fas fa-glass-whiskey"></i>
+                                    </div>
+                                    <h4>برادات المشروبات</h4>
+                                    <p>برادات متخصصة للمشروبات الغازية والعصائر والمعبئات</p>
+                                </div>
+
+                                <div class="manufacturing-item">
+                                    <div class="manufacturing-icon">
+                                        <i class="fas fa-drumstick-bite"></i>
+                                    </div>
+                                    <h4>برادات اللحوم</h4>
+                                    <p>أنظمة تبريد متخصصة للحفاظ على اللحوم والدواجن والأسماك</p>
+                                </div>
+
+                                <div class="manufacturing-item">
+                                    <div class="manufacturing-icon">
+                                        <i class="fas fa-store"></i>
+                                    </div>
+                                    <h4>برادات المتاجر</h4>
+                                    <p>تصاميم خاصة للمتاجر الكبيرة والمولات والسوبرماركت</p>
+                                </div>
+                            </div>
+
+                            <div class="manufacturing-features">
+                                <h4><i class="fas fa-cogs"></i> مميزات التصنيع حسب الطلب:</h4>
+                                <ul>
+                                    <li><i class="fas fa-check"></i> مقاسات متنوعة من 70 سم إلى 200 سم</li>
+                                    <li><i class="fas fa-check"></i> تصميم داخلي وخارجي حسب المواصفات المطلوبة</li>
+                                    <li><i class="fas fa-check"></i> أنظمة تبريد متخصصة لكل نوع من المنتجات</li>
+                                    <li><i class="fas fa-check"></i> مواد عزل عالية الجودة للكفاءة الطاقية</li>
+                                    <li><i class="fas fa-check"></i> ضمان وكفالة على جميع المنتجات المصنعة</li>
+                                    <li><i class="fas fa-check"></i> شاشات تحكم رقمية ومراقبة درجة الحرارة</li>
+                                </ul>
+                            </div>
+
+                            <div class="manufacturing-cta">
+                                <p>لطلب تصنيع برادات صناعية حسب مواصفاتك الخاصة أو الاستفسار عن المشاريع الكبيرة، تواصل مع فريقنا المتخصص</p>
+                                
+                                <a href="https://wa.me/+963936604658" class="btn btn-primary" target="_blank" aria-label="تواصل عبر واتساب">
+                                        <i class="fas fa-headset"></i>
+                                        <span>استفسر عن التصنيع حسب الطلب</span>
+                                    </a>
+</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -180,17 +302,17 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="about-content">
                     <div class="section-header">
                         <h2 class="section-title">لماذا تختار <span class="highlight">شامية</span>؟</h2>
                     </div>
-                    
+
                     <p class="about-description">
                         <strong>شامية</strong>
-                         شركة سورية رائدة في صناعة الثلاجات. نلتزم بتقديم منتجات عالية الجودة بأسعار تنافسية، مع التركيز على توفير الطاقة والابتكار في التصميم.
+                        شركة سورية رائدة في صناعة الثلاجات. نلتزم بتقديم منتجات عالية الجودة بأسعار تنافسية، مع التركيز على توفير الطاقة والابتكار في التصميم.
                     </p>
-                    
+
                     <div class="about-features">
                         <div class="about-feature">
                             <div class="feature-icon">
@@ -201,7 +323,7 @@
                                 <p>نصنع في سورية بأيدي خبراء سوريين</p>
                             </div>
                         </div>
-                        
+
                         <div class="about-feature">
                             <div class="feature-icon">
                                 <i class="fas fa-cogs"></i>
@@ -211,7 +333,7 @@
                                 <p>أحدث أنظمة التبريد والتوفير الطاقي</p>
                             </div>
                         </div>
-                        
+
                         <div class="about-feature">
                             <div class="feature-icon">
                                 <i class="fas fa-truck"></i>
@@ -221,7 +343,7 @@
                                 <p>توصيل  لجميع المحافظات</p>
                             </div>
                         </div>
-                        
+
                         <div class="about-feature">
                             <div class="feature-icon">
                                 <i class="fas fa-user-check"></i>
@@ -244,7 +366,7 @@
                 <h2 class="section-title">خدمات الصيانة</h2>
                 <p class="section-subtitle">نقدم خدمات صيانة سريعة ومحترفة لجميع موديلات ثلاجات شامية</p>
             </div>
-            
+
             <div class="repair-cards">
                 <div class="repair-card">
                     <div class="repair-card-header emergency">
@@ -268,7 +390,7 @@
                         </a>
                     </div>
                 </div>
-                
+
                 <div class="repair-card">
                     <div class="repair-card-header scheduled">
                         <div class="repair-icon">
@@ -302,7 +424,7 @@
                 <h2 class="section-title">تواصل معنا</h2>
                 <p class="section-subtitle">نحن هنا لخدمتك ومساعدتك في اختيار أفضل ثلاجة تناسب احتياجاتك</p>
             </div>
-            
+
             <div class="contact-grid">
                 <div class="contact-info">
                     <div class="info-card">
@@ -314,19 +436,19 @@
                             <p>حلب - الشيخ نجار - الفئة الثانية</p>
                         </div>
                     </div>
-                    
+
                     <div class="info-card">
                         <div class="info-icon">
                             <i class="fas fa-phone"></i>
                         </div>
                         <div class="info-content">
                             <h3>الهاتف</h3>
-                            
+
                             <p>658 604 936 963+</p>
                             <p></p>
                         </div>
                     </div>
-                    
+
                     <div class="info-card">
                         <div class="info-icon">
                             <i class="fas fa-envelope"></i>
@@ -337,7 +459,7 @@
                             <p></p>
                         </div>
                     </div>
-                    
+
                     <div class="info-card">
                         <div class="info-icon">
                             <i class="fas fa-clock"></i>
@@ -349,7 +471,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="contact-map">
                     <div id="map"></div>
                     <div class="map-overlay">
@@ -374,10 +496,10 @@
                     <div class="footer-social">
                         <a href="https://www.facebook.com/share/1CfTjAu3jq/" class="social-link"><i class="fab fa-facebook-f"></i></a>
                         <a href="https://www.instagram.com/shamia_aleppo?igsh=Z3UxZzV1Nm9nZWNn" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="https://api.whatsapp.com/send?phone=963936604658" class="social-link" target="_blank"><i class="fab fa-whatsapp"></i></a>                        
+                        <a href="https://api.whatsapp.com/send?phone=963936604658" class="social-link" target="_blank"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
-                
+
                 <div class="footer-links">
                     <h3 class="footer-title">روابط سريعة</h3>
                     <ul class="footer-nav">
@@ -388,7 +510,7 @@
                         <li><a href="#contact">اتصل بنا</a></li>
                     </ul>
                 </div>
-                
+
                 <div class="footer-newsletter">
                     <h3 class="footer-title">اشترك في نشرتنا</h3>
                     <p>كن أول من يعرف عن عروضنا الجديدة ومنتجاتنا الحديثة</p>
@@ -402,7 +524,7 @@
                     </form>
                 </div>
             </div>
-            
+
             <div class="footer-bottom">
                 <p>جميع الحقوق محفوظة &copy; شامية للثلاجات <span id="currentYear"></span></p>
                 <div class="payment-methods">
@@ -425,7 +547,110 @@
         <i class="fas fa-chevron-up"></i>
     </button>
 
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="js/main.js"></script>
+
+    <script>
+        // Initialize Swiper Gallery
+        document.addEventListener('DOMContentLoaded', function() {
+            // Gallery Swiper
+            const gallerySwiper = new Swiper('.gallerySwiper', {
+                // Optional parameters
+                direction: 'horizontal',
+                loop: true,
+                autoplay: {
+                    delay: 3000, // 3 seconds
+                    disableOnInteraction: false,
+                },
+                speed: 600, // Smooth transition speed
+                grabCursor: true,
+
+                // If we need pagination
+                pagination: {
+                    el: '.gallery-pagination',
+                    clickable: true,
+                    dynamicBullets: true,
+                },
+
+                // Navigation arrows
+                navigation: {
+                    nextEl: '.gallery-next',
+                    prevEl: '.gallery-prev',
+                },
+
+                // Responsive breakpoints
+                breakpoints: {
+                    // when window width is >= 320px
+                    320: {
+                        slidesPerView: 1,
+                        spaceBetween: 10,
+                        pagination: {
+                            dynamicBullets: false,
+                        }
+                    },
+                    // when window width is >= 480px
+                    480: {
+                        slidesPerView: 1,
+                        spaceBetween: 15,
+                        pagination: {
+                            dynamicBullets: false,
+                        }
+                    },
+                    // when window width is >= 768px
+                    768: {
+                        slidesPerView: 2,
+                        spaceBetween: 20,
+                    },
+                    // when window width is >= 1024px
+                    1024: {
+                        slidesPerView: 3,
+                        spaceBetween: 25,
+                    },
+                    // when window width is >= 1200px
+                    1200: {
+                        slidesPerView: 3,
+                        spaceBetween: 30,
+                    }
+                },
+
+                // Effect for transitions
+                effect: 'slide',
+                fadeEffect: {
+                    crossFade: true
+                },
+
+                // Accessibility
+                a11y: {
+                    prevSlideMessage: 'الصورة السابقة',
+                    nextSlideMessage: 'الصورة التالية',
+                    firstSlideMessage: 'هذه هي الصورة الأولى',
+                    lastSlideMessage: 'هذه هي الصورة الأخيرة',
+                    paginationBulletMessage: 'انتقل إلى الصورة {{index}}',
+                },
+            });
+
+            // Pause autoplay on hover
+            const swiperContainer = document.querySelector('.gallerySwiper');
+            if (swiperContainer) {
+                swiperContainer.addEventListener('mouseenter', () => {
+                    gallerySwiper.autoplay.stop();
+                });
+
+                swiperContainer.addEventListener('mouseleave', () => {
+                    gallerySwiper.autoplay.start();
+                });
+            }
+
+            // Add touch support for mobile
+            if ('ontouchstart' in window) {
+                // Enable touch gestures
+                gallerySwiper.params.touchRatio = 1;
+                gallerySwiper.params.longSwipesRatio = 0.5;
+                gallerySwiper.update();
+            }
+        });
+    </script>
 </body>
 </html>
