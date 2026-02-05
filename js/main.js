@@ -151,18 +151,18 @@ function loadProducts() {
     const productsGrid = document.getElementById('productsGrid');
     if (!productsGrid) return;
 
-    // Product data - UPDATED WITH ALL 12 PRODUCTS
+    // Product data - UPDATED: ONLY PRODUCTS 1-7, 11-12
     const products = [
         {
             id: 1,
             name: "ثلاجة شامية 70 سنتيمتر رول بوند",
-            desc: "تبريد مروحة ومبخرة لرفع الأداء، عزل مضاعف، ضاغط انفرتر، عزل 6 سم، أنابيب رول بوند.",
+            desc: "تبريد هجين و محرك بتبريد مروحة ومبخرة لرفع الأداء، عزل مضاعف، ضاغط انفرتر، عزل 6 سم.",
             category: "home"
         },
         {
             id: 2,
             name: "ثلاجة شامية 80 سنتيمتر",
-            desc: "تبريد مروحة ومبخرة، عزل مضاعف، ضاغط انفرتر، عزل 6 سم، أنابيب نحاسية 22 متر، عرض 80 سم.",
+            desc: "تبريد هجين و محرك بتبريد مروحة ومبخرة لرفع الأداء، عزل مضاعف، ضاغط انفرتر، عزل 6 سم، عرض 80 سم.",
             category: "home"
         },
         {
@@ -173,7 +173,7 @@ function loadProducts() {
         },
         {
             id: 4,
-            name: "ثلاجة شامية 65 سبور رول بوند",
+            name: "ثلاجة شامية 65 رفين رول بوند",
             desc: "تبريد هجين ومبخرة، عزل مضاعف 5 سم، ضاغط انفرتر، أنابيب رول بوند، 5 رفوف.",
             category: "home"
         },
@@ -193,24 +193,6 @@ function loadProducts() {
             id: 7,
             name: "ثلاجة شامية 70 سنتيمتر ",
             desc: "تبريد مروحة ومبخرة، عزل مضاعف 6 سم، ضاغط انفرتر، أنابيب نحاسية 22 متر، صناعة سورية.",
-            category: "home"
-        },
-        {
-            id: 8,
-            name: "ثلاجة شامية 80 سنتيمتر سبور",
-            desc: "تبريد هجين ومبخرة، عزل مضاعف 6 سم، ضاغط انفرتر، أنابيب نحاسية 22 متر، 5 رفوف.",
-            category: "home"
-        },
-        {
-            id: 9,
-            name: "ثلاجة شامية 70 سنتيمتر",
-            desc: "تبريد مروحة ومبخرة، عزل مضاعف 6 سم، ضاغط انفرتر، أنابيب نحاسية 22 متر، تصميم عصري.",
-            category: "home"
-        },
-        {
-            id: 10,
-            name: "ثلاجة شامية 70 سنتيمتر",
-            desc: "تبريد مروحة ومبخرة، عزل مضاعف 6 سم، ضاغط انفرتر، أنابيب نحاسية 22 متر، غاز صديق للبيئة.",
             category: "home"
         },
         {
@@ -379,8 +361,11 @@ function initProductPage() {
     const filename = pathname.split('/').pop();
     const productId = filename.replace('.html', '');
 
-    // Only process if productId is a number (1-12)
-    if (!productId || isNaN(productId) || productId < 1 || productId > 12) {
+    // Only process if productId is a number (1-7, 11-12)
+    const validIds = ['1', '2', '3', '4', '5', '6', '7', '11', '12'];
+    if (!productId || !validIds.includes(productId)) {
+        // Redirect to homepage if invalid product
+        window.location.href = 'index.html';
         return;
     }
 
@@ -413,16 +398,16 @@ function initProductPage() {
         };
     }
 
-    // Complete product details for all 12 products
+    // Complete product details for all 9 products (1-7, 11-12)
     const productDetails = {
         '1': {
             name: 'ثلاجة شامية 70 سنتيميتر رول بوند',
             specs: [
                 { label: 'السعة', value: '70 سنتيميتر' },
-                { label: 'نوع التبريد', value: 'تبريد مروحة + مبخرة' },
+                { label: 'نوع التبريد', value: 'هجين' },
+                { label: 'تبريد المحرك', value: 'مروحة + مبخرة' },
                 { label: 'الضاغط', value: 'ضاغط انفرتر' },
-                { label: 'سماكة العزل', value: '٦ سنتمتر' },
-                { label: 'الأنابيب', value: 'رول بوند' },
+                { label: 'سماكة العزل', value: '٦ سنتمتر'},
                 { label: 'الصفيحة', value: 'رول بوند' },
                 { label: 'حماية', value: '٨ متر' },
                 { label: 'الغاز', value: 'فريون صديق للبيئة' }
@@ -432,7 +417,8 @@ function initProductPage() {
             name: 'ثلاجة شامية 80 سنتيمتر',
             specs: [
                 { label: 'السعة', value: '80 سنتيمتر' },
-                { label: 'نوع التبريد', value: 'تبريد مروحة + مبخرة' },
+                { label: 'نوع التبريد', value: 'هجين' },
+                { label: 'تبريد المحرك', value: 'مروحة + مبخرة' },
                 { label: 'الضاغط', value: 'ضاغط انفرتر' },
                 { label: 'سماكة العزل', value: '٦ سنتمتر' },
                 { label: 'الأنابيب', value: 'نحاسية بطول 25 متر' },
@@ -446,10 +432,10 @@ function initProductPage() {
             name: 'ثلاجة شامية 80 سنتيمتر رول بود',
             specs: [
                 { label: 'السعة', value: '80 سنتيمتر رول بود' },
-                { label: 'نوع التبريد', value: 'تبريد مروحة + مبخرة' },
+                { label: 'نوع التبريد', value: 'هجين' },
+                { label: 'تبريد المحرك', value: 'مروحة + مبخرة' },
                 { label: 'الضاغط', value: 'ضاغط انفرتر' },
                 { label: 'سماكة العزل', value: '٦ سنتمتر' },
-                { label: 'الأنابيب', value: 'رول بوند' },
                 { label: 'الصفيحة', value: 'رول بوند' },
                 { label: 'الحماية', value: 'نحاس 9 متر' },
                 { label: 'عرض الواجهة', value: '٨٠ سنتيمتر' },
@@ -457,15 +443,15 @@ function initProductPage() {
             ]
         },
         '4': {
-            name: 'ثلاجة شامية 65 سبور رول بوند',
+            name: 'ثلاجة شامية 65 رفين رول بوند',
             specs: [
-                { label: 'السعة', value: '65 سبور رول بوند' },
+                { label: 'السعة', value: '65 رفين رول بوند' },
                 { label: 'نوع التبريد', value: 'تبريد هجين' },
+                { label: 'تبريد المحرك', value: 'مروحة + مبخرة' },
                 { label: 'الضاغط', value: 'ضاغط انفرتر' },
                 { label: 'سماكة العزل', value: '٥ سنتمتر' },
-                { label: 'الأنابيب', value: 'رول بوند' },
                 { label: 'الصفيحة', value: 'رول بوند' },
-                { label: 'الحماية', value: 'رول بوند' },
+                { label: 'الحماية', value: '6 متر من النحاس' },
                 { label: 'عرض الواجهة', value: '٦٥ سنتيمتر' },
                 { label: 'عدد الرفوف', value: '٥ رفوف' }
             ]
@@ -474,11 +460,12 @@ function initProductPage() {
             name: 'ثلاجة شامية 65 سنتيمتر رفين',
             specs: [
                 { label: 'السعة', value: '65 سبور رفين' },
-                { label: 'نوع التبريد', value: 'تبريد مروحة + مبخرة' },
+                { label: 'نوع التبريد', value: 'هجين' },
+                { label: 'تبريد المحرك', value: 'مروحة + مبخرة' },
                 { label: 'الضاغط', value: 'ضاغط انفرتر' },
                 { label: 'سماكة العزل', value: '٥ سنتمتر' },
-                { label: 'الأنابيب', value: 'رول بوند' },
-                { label: 'الصفيحة', value: 'رول بوند' },
+                { label: 'الأنابيب', value: '21 متر من النحاس' },
+                { label: 'قياس الانابيب', value: '1/4' },
                 { label: 'الحماية', value: 'نحاس 6 متر' },
                 { label: 'عرض الواجهة', value: '٦٥ سنتيمتر' },
                 { label: 'عدد الرفوف', value: '5 رفوف' }
@@ -489,6 +476,7 @@ function initProductPage() {
             specs: [
                 { label: 'السعة', value: '65 سبور' },
                 { label: 'نوع التبريد', value: 'تبريد تجميد' },
+                { label: 'تبريد المحرك', value: 'مروحة ' },
                 { label: 'الضاغط', value: 'ضاغط انفرتر' },
                 { label: 'سماكة العزل', value: '6 سنتمتر' },
                 { label: 'الأنابيب', value: 'نحاسية بطول ٢٠ متر' },
@@ -503,48 +491,8 @@ function initProductPage() {
             specs: [
                 { label: 'النوع', value: 'ثلاجة 70' },
                 { label: 'السعة', value: '70 سنتيمتر' },
-                { label: 'نوع التبريد', value: 'تبريد مروحة + مبخرة' },
-                { label: 'الضاغط', value: 'ضاغط انفرتر' },
-                { label: 'سماكة العزل', value: '٦ سنتمتر' },
-                { label: 'الأنابيب', value: 'نحاسية بطول ٢٢ متر' },
-                { label: 'قطر الأنابيب', value: '٥/١٦' },
-                { label: 'حماية النحاس', value: '٨ متر' },
-                { label: 'الغاز', value: 'فريون صديق للبيئة' }
-            ]
-        },
-        '8': {
-            name: 'ثلاجة شامية 80 سنتيمتر سبور',
-            specs: [
-                { label: 'النوع', value: 'ثلاجة سبور' },
-                { label: 'السعة', value: '80 سنتيمتر' },
-                { label: 'نوع التبريد', value: 'تبريد هجين' },
-                { label: 'الضاغط', value: 'ضاغط انفرتر' },
-                { label: 'سماكة العزل', value: '٦ سنتمتر' },
-                { label: 'الأنابيب', value: 'نحاسية بطول ٢٢ متر' },
-                { label: 'قطر الأنابيب', value: '٥/١٦' },
-                { label: 'حماية النحاس', value: '٩ متر' },
-                { label: 'عرض الواجهة', value: '٨٠ سنتيمتر' },
-                { label: 'عدد الرفوف', value: '٥ رفوف' }
-            ]
-        },
-        '9': {
-            name: 'ثلاجة شامية 70 سنتيمتر',
-            specs: [
-                { label: 'السعة', value: '70 سنتيمتر' },
-                { label: 'نوع التبريد', value: 'تبريد مروحة + مبخرة' },
-                { label: 'الضاغط', value: 'ضاغط انفرتر' },
-                { label: 'سماكة العزل', value: '٦ سنتمتر' },
-                { label: 'الأنابيب', value: 'نحاسية بطول ٢٢ متر' },
-                { label: 'قطر الأنابيب', value: '٥/١٦' },
-                { label: 'حماية النحاس', value: '٨ متر' },
-                { label: 'الغاز', value: 'فريون صديق للبيئة' }
-            ]
-        },
-        '10': {
-            name: 'ثلاجة شامية 70 سنتيمتر',
-            specs: [
-                { label: 'السعة', value: '70 سنتيمتر' },
-                { label: 'نوع التبريد', value: 'تبريد مروحة + مبخرة' },
+                { label: 'نوع التبريد', value: 'هجين' },
+                { label: 'تبريد المحرك', value: 'مروحة + مبخرة' },
                 { label: 'الضاغط', value: 'ضاغط انفرتر' },
                 { label: 'سماكة العزل', value: '٦ سنتمتر' },
                 { label: 'الأنابيب', value: 'نحاسية بطول ٢٢ متر' },
@@ -558,10 +506,10 @@ function initProductPage() {
             specs: [
                 { label: 'المقاس', value: '140 سنتيميتر' },
                 { label: 'عدد السلات', value: '9 سلات' },
-                { label: 'أنابيب التبريد', value: '30 متر 1/4 نحاس' },
+                { label: 'أنابيب التبريد', value: '30 متر 5/16 نحاس' },
                 { label: 'سمك العزل', value: '5 سنتيميتر' },
                 { label: 'نوع الأنابيب', value: 'نحاس' },
-                { label: 'ارضية الفريزر', value: 'مصنعة من الكروم  الغذائي' }
+                { label: 'ارضية الفريزر', value: 'مصنعة من الكروم الغذائي' }
             ]
         },
         '12': {
@@ -572,14 +520,18 @@ function initProductPage() {
                 { label: 'أنابيب التبريد', value: '30 متر 1/4 نحاس' },
                 { label: 'سمك العزل', value: '5 سنتيميتر' },
                 { label: 'نوع الأنابيب', value: 'نحاس' },
-                { label: 'ارضية الفريزر', value: 'مصنعة من الكروم  الغذائي' }
+                { label: 'ارضية الفريزر', value: 'مصنعة من الكروم الغذائي' }
             ]
         }
     };
 
     const details = productDetails[productId];
 
-    if (!details) return;
+    if (!details) {
+        // Redirect to homepage if no details found
+        window.location.href = 'index.html';
+        return;
+    }
 
     // Update page title and breadcrumb
     if (productTitle) {
@@ -661,16 +613,6 @@ function initMultiStepForms() {
                 updateSummary();
             });
         });
-
-        // Edit button in order summary
-        const editOrderBtn = document.getElementById('editOrderBtn');
-        if (editOrderBtn) {
-            editOrderBtn.addEventListener('click', function () {
-                currentStep = 0;
-                updateProgress();
-                showStep(currentStep);
-            });
-        }
 
         function showStep(step) {
             steps.forEach(s => s.classList.remove('active'));
@@ -857,14 +799,12 @@ function updateSummary() {
         const phone = document.getElementById('orderPhone')?.value || '-';
         const city = document.getElementById('orderCity')?.value || '-';
         const district = document.getElementById('orderDistrict')?.value || '-';
-        const tubeType = document.querySelector('input[name="tubeType"]:checked')?.value || '-';
         const notes = document.getElementById('orderNotes')?.value || 'لا توجد ملاحظات';
 
         document.getElementById('summaryName').textContent = name;
         document.getElementById('summaryPhone').textContent = phone;
         document.getElementById('summaryCity').textContent = city;
         document.getElementById('summaryDistrict').textContent = district;
-        document.getElementById('summaryTube').textContent = tubeType;
         document.getElementById('summaryNotes').textContent = notes;
 
         // Get product name from URL or current page
@@ -878,9 +818,6 @@ function updateSummary() {
             '5': 'ثلاجة شامية 65 سنتيمتر رفين',
             '6': 'ثلاجة شامية 65 سبور',
             '7': 'ثلاجة شامية 70 سنتيمتر سبور',
-            '8': 'ثلاجة شامية 80 سنتيمتر سبور',
-            '9': 'ثلاجة شامية 70 سنتيمتر',
-            '10': 'ثلاجة شامية 70 سنتيمتر',
             '11': 'فريزر شامية 140 سنتيمتر نحاس',
             '12': 'فريزر شامية 110 سنتيمتر نحاس'
         };
@@ -1037,7 +974,6 @@ function generateOrderWhatsAppMessage() {
     const city = document.getElementById('orderCity')?.value || '';
     const district = document.getElementById('orderDistrict')?.value || '';
     const address = document.getElementById('orderAddress')?.value || '';
-    const tubeType = document.querySelector('input[name="tubeType"]:checked')?.value || '';
     const notes = document.getElementById('orderNotes')?.value || '';
     const lat = document.getElementById('orderLat')?.value || '';
     const lng = document.getElementById('orderLng')?.value || '';
@@ -1053,9 +989,6 @@ function generateOrderWhatsAppMessage() {
         '5': 'ثلاجة شامية 65 سنتيمتر رفين',
         '6': 'ثلاجة شامية 65 سبور',
         '7': 'ثلاجة شامية 70 سنتيمتر سبور',
-        '8': 'ثلاجة شامية 80 سنتيمتر سبور',
-        '9': 'ثلاجة شامية 70 سنتيمتر',
-        '10': 'ثلاجة شامية 70 سنتيمتر',
         '11': 'فريزر شامية 140 سنتيمتر نحاس',
         '12': 'فريزر شامية 110 سنتيمتر نحاس'
     };
@@ -1068,7 +1001,6 @@ function generateOrderWhatsAppMessage() {
         `المنطقة: ${district}%0A` +
         `العنوان: ${address}%0A` +
         `المنتج: ${productName}%0A` +
-        `نوع الأنابيب: ${tubeType}%0A` +
         `الموقع: ${lat && lng ? `https://maps.google.com/?q=${lat},${lng}` : 'غير محدد'}%0A` +
         `ملاحظات: ${notes || 'لا توجد'}%0A` +
         `التاريخ: ${new Date().toLocaleDateString('ar-SY')}%0A` +

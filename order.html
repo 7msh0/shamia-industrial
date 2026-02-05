@@ -35,7 +35,7 @@
                     <img src="img/logo-with-name.png" alt="شامية للثلاجات" class="logo-img">
                 </a>
             </div>
-            
+
             <div class="nav-menu" id="navMenu">
                 <ul class="nav-list">
                     <li class="nav-item"><a href="index.html" class="nav-link">الرئيسية</a></li>
@@ -45,7 +45,7 @@
                     <li class="nav-item"><a href="index.html#contact" class="nav-link">اتصل بنا</a></li>
                 </ul>
             </div>
-            
+
             <div class="nav-actions">
                 <a href="tel:+963936604658" class="nav-phone">
                     <i class="fas fa-phone"></i>
@@ -72,14 +72,14 @@
                     <span class="breadcrumb-separator">/</span>
                     <span class="breadcrumb-current">طلب شراء</span>
                 </div>
-                
+
                 <h1 class="form-title">
                     <i class="fas fa-shopping-cart"></i>
                     طلب شراء ثلاجة <span class="highlight">شامية</span>
                 </h1>
                 <p class="form-subtitle">املأ النموذج التالي وسنتصل بك لتأكيد الطلب خلال 24 ساعة</p>
             </div>
-            
+
             <div class="form-container">
                 <div class="form-progress">
                     <div class="progress-steps">
@@ -89,18 +89,14 @@
                         </div>
                         <div class="progress-step">
                             <div class="step-number">2</div>
-                            <div class="step-label">تفاصيل المنتج</div>
-                        </div>
-                        <div class="progress-step">
-                            <div class="step-number">3</div>
-                            <div class="step-label">تأكيد الطلب</div>
+                            <div class="step-label">الموقع والتأكيد</div>
                         </div>
                     </div>
                     <div class="progress-bar">
-                        <div class="progress-fill" style="width: 33%"></div>
+                        <div class="progress-fill" style="width: 50%"></div>
                     </div>
                 </div>
-                
+
                 <form id="orderForm" class="form-content">
                     <!-- Step 1: Customer Information -->
                     <div class="form-step active" data-step="1">
@@ -108,7 +104,7 @@
                             <h2><i class="fas fa-user"></i> معلومات العميل</h2>
                             <p>الرجاء إدخال معلوماتك الشخصية</p>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="orderName">
                                 <i class="fas fa-user-circle"></i>
@@ -117,7 +113,7 @@
                             <input type="text" id="orderName" name="name" class="form-control" required placeholder="أدخل اسمك الكامل">
                             <div class="form-hint">مثال: أحمد محمد</div>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="orderPhone">
                                 <i class="fas fa-phone"></i>
@@ -126,7 +122,7 @@
                             <input type="tel" id="orderPhone" name="phone" class="form-control" required placeholder="أدخل رقم هاتفك">
                             <div class="form-hint">مثال: 0991234567</div>
                         </div>
-                        
+
                         <div class="form-grid">
                             <div class="form-group">
                                 <label for="orderCity">
@@ -138,7 +134,7 @@
                                     <!-- Filled by JavaScript -->
                                 </select>
                             </div>
-                            
+
                             <div class="form-group">
                                 <label for="orderDistrict">
                                     <i class="fas fa-map-marker-alt"></i>
@@ -147,7 +143,7 @@
                                 <input type="text" id="orderDistrict" name="district" class="form-control" required placeholder="اسم منطقتك">
                             </div>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="orderAddress">
                                 <i class="fas fa-map-pin"></i>
@@ -155,59 +151,22 @@
                             </label>
                             <textarea id="orderAddress" name="address" class="form-control" rows="3" required placeholder="شارع، بناء، طابق، شقة"></textarea>
                         </div>
-                        
+
                         <div class="form-actions">
-                            <button type="button" class="btn btn-secondary btn-next">
+                            <button type="button" class="btn btn-primary btn-next">
                                 التالي
                                 <i class="fas fa-arrow-left"></i>
                             </button>
                         </div>
                     </div>
-                    
-                    <!-- Step 2: Product Details -->
+
+                    <!-- Step 2: Location & Confirmation -->
                     <div class="form-step" data-step="2">
                         <div class="step-header">
-                            <h2><i class="fas fa-box"></i> تفاصيل المنتج</h2>
-                            <p>اختر المنتج والمواصفات المطلوبة</p>
+                            <h2><i class="fas fa-map-marked-alt"></i> الموقع والتأكيد</h2>
+                            <p>حدد موقعك وراجع تفاصيل الطلب</p>
                         </div>
-                        
-                        
-                        
-                        <div class="form-group">
-                            <label>
-                                <i class="fas fa-cogs"></i>
-                                نوع الأنابيب *
-                            </label>
-                            <div class="radio-group">
-                                <div class="radio-option">
-                                    <input type="radio" id="tubeCopper" name="tubeType" value="نحاس" required>
-                                    <label for="tubeCopper">
-                                        <span class="radio-icon">
-                                            <i class="fas fa-check-circle"></i>
-                                        </span>
-                                        <span class="radio-content">
-                                            <strong> نحاس</strong>
-                                            <small>أكثر متانة وعمر أطول</small>
-                                        </span>
-                                        <span class="radio-badge">+$</span>
-                                    </label>
-                                </div>
-                                <div class="radio-option">
-                                    <input type="radio" id="tubeAluminum" name="tubeType" value="ألمنيوم" required>
-                                    <label for="tubeAluminum">
-                                        <span class="radio-icon">
-                                            <i class="fas fa-check-circle"></i>
-                                        </span>
-                                        <span class="radio-content">
-                                            <strong>رول بوند</strong>
-                                            <small>أخف وزناً وأقل سعراً</small>
-                                        </span>
-                                        <span class="radio-badge">قياسي</span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        
+
                         <div class="form-group">
                             <label>
                                 <i class="fas fa-map-marked-alt"></i>
@@ -229,7 +188,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="orderNotes">
                                 <i class="fas fa-sticky-note"></i>
@@ -237,35 +196,12 @@
                             </label>
                             <textarea id="orderNotes" name="notes" class="form-control" rows="4" placeholder="ملاحظات إضافية أو طلبات خاصة..."></textarea>
                         </div>
-                        
-                        <div class="form-actions">
-                            <button type="button" class="btn btn-secondary btn-prev">
-                                <i class="fas fa-arrow-right"></i>
-                                السابق
-                            </button>
-                            <button type="button" class="btn btn-primary btn-next">
-                                التالي
-                                <i class="fas fa-arrow-left"></i>
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <!-- Step 3: Order Confirmation -->
-                    <div class="form-step" data-step="3">
-                        <div class="step-header">
-                            <h2><i class="fas fa-check-circle"></i> تأكيد الطلب</h2>
-                            <p>راجع معلومات الطلب قبل الإرسال</p>
-                        </div>
-                        
+
                         <div class="order-summary">
                             <div class="summary-header">
                                 <h3>ملخص الطلب</h3>
-                                <button type="button" class="btn-edit" id="editOrderBtn">
-                                    <i class="fas fa-edit"></i>
-                                    تعديل
-                                </button>
                             </div>
-                            
+
                             <div class="summary-content">
                                 <div class="summary-item">
                                     <span class="summary-label">الاسم:</span>
@@ -288,15 +224,11 @@
                                     <span class="summary-value" id="summaryProduct">-</span>
                                 </div>
                                 <div class="summary-item">
-                                    <span class="summary-label">نوع الأنابيب:</span>
-                                    <span class="summary-value" id="summaryTube">-</span>
-                                </div>
-                                <div class="summary-item">
                                     <span class="summary-label">الملاحظات:</span>
                                     <span class="summary-value" id="summaryNotes">لا توجد ملاحظات</span>
                                 </div>
                             </div>
-                            
+
                             <div class="summary-footer">
                                 <div class="terms-agreement">
                                     <input type="checkbox" id="orderTerms" name="terms" required>
@@ -307,27 +239,27 @@
                                         <a href="#" class="terms-link">سياسة الخصوصية</a>
                                     </label>
                                 </div>
-                                
+
                                 <div class="order-note">
                                     <i class="fas fa-info-circle"></i>
                                     <p>سيتم التواصل معك خلال 24 ساعة لتأكيد الطلب والتفاصيل النهائية</p>
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="form-actions">
                             <button type="button" class="btn btn-secondary btn-prev">
                                 <i class="fas fa-arrow-right"></i>
                                 السابق
                             </button>
-                            <button type="submit" class="btn btn-primary btn-submit">
-                                <i class="fas fa-paper-plane"></i>
-                                إرسال الطلب
-                            </button>
+                            <a href="#" id="whatsappSubmitBtn" class="btn btn-success btn-submit">
+                                <i class="fab fa-whatsapp"></i>
+                                إرسال عبر واتساب
+                            </a>
                         </div>
                     </div>
                 </form>
-                
+
                 <div class="form-success" id="successMessage" style="display: none;">
                     <div class="success-icon">
                         <i class="fas fa-check-circle"></i>
@@ -339,14 +271,14 @@
                             <i class="fas fa-home"></i>
                             العودة للرئيسية
                         </a>
-                        <a href="#" id="whatsappBtn" class="btn btn-success" target="_blank">
-                            <i class="fab fa-whatsapp"></i>
-                            إرسال عبر واتساب
-                        </a>
+                        <button onclick="window.location.reload()" class="btn btn-secondary">
+                            <i class="fas fa-redo"></i>
+                            طلب جديد
+                        </button>
                     </div>
                 </div>
             </div>
-            
+
             <div class="form-info">
                 <div class="info-card">
                     <div class="info-icon">
@@ -355,7 +287,7 @@
                     <div class="info-content">
                         <h4>ضمان  </h4>
                         <p></p>
-                        </div>
+                    </div>
                 </div>
                 <div class="info-card">
                     <div class="info-icon">
@@ -396,10 +328,10 @@
                         <a href="https://www.instagram.com/shamia_aleppo?igsh=Z3UxZzV1Nm9nZWNn" class="social-link"><i class="fab fa-instagram"></i></a>
 
                         <a href="https://wa.me/+963936604658" class="social-link"><i class="fab fa-whatsapp"></i></a>
-                        
+
                     </div>
                 </div>
-                
+
                 <div class="footer-links">
                     <h3 class="footer-title">روابط سريعة</h3>
                     <ul class="footer-nav">
@@ -410,7 +342,7 @@
                         <li><a href="index.html#contact">اتصل بنا</a></li>
                     </ul>
                 </div>
-                
+
                 <div class="footer-newsletter">
                     <h3 class="footer-title">اشترك في نشرتنا</h3>
                     <p>كن أول من يعرف عن عروضنا الجديدة ومنتجاتنا الحديثة</p>
@@ -424,7 +356,7 @@
                     </form>
                 </div>
             </div>
-            
+
             <div class="footer-bottom">
                 <p>جميع الحقوق محفوظة &copy; شامية للثلاجات <span id="currentYear"></span></p>
                 <div class="payment-methods">
@@ -449,5 +381,99 @@
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="js/main.js"></script>
+
+    <script>
+        // Handle WhatsApp submit button
+        document.addEventListener('DOMContentLoaded', function () {
+            const whatsappSubmitBtn = document.getElementById('whatsappSubmitBtn');
+
+            if (whatsappSubmitBtn) {
+                whatsappSubmitBtn.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    // First, trigger the form submission to validate and generate the WhatsApp message
+                    const orderForm = document.getElementById('orderForm');
+                    const submitEvent = new Event('submit', { bubbles: true, cancelable: true });
+
+                    // Check if form is valid first
+                    let isValid = true;
+                    const requiredFields = orderForm.querySelectorAll('input[required], select[required], textarea[required]');
+
+                    requiredFields.forEach(field => {
+                        if (!field.value.trim()) {
+                            isValid = false;
+                            field.style.borderColor = '#e53e3e';
+                            setTimeout(() => {
+                                field.style.borderColor = '';
+                            }, 2000);
+                        }
+                    });
+
+                    // Check terms agreement
+                    const terms = document.getElementById('orderTerms');
+                    if (terms && !terms.checked) {
+                        isValid = false;
+                        alert('الرجاء الموافقة على الشروط والأحكام');
+                    }
+
+                    if (!isValid) {
+                        alert('الرجاء ملء جميع الحقول المطلوبة');
+                        return;
+                    }
+
+                    // Generate the WhatsApp message manually
+                    const name = document.getElementById('orderName')?.value || '';
+                    const phone = document.getElementById('orderPhone')?.value || '';
+                    const city = document.getElementById('orderCity')?.value || '';
+                    const district = document.getElementById('orderDistrict')?.value || '';
+                    const address = document.getElementById('orderAddress')?.value || '';
+                    const notes = document.getElementById('orderNotes')?.value || '';
+                    const lat = document.getElementById('orderLat')?.value || '';
+                    const lng = document.getElementById('orderLng')?.value || '';
+
+                    // Get product from URL
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const productId = urlParams.get('product');
+                    const productDetails = {
+                        '1': 'ثلاجة شامية 70 سنتيمتر رول بوند',
+                        '2': 'ثلاجة شامية 80 سنتيمتر',
+                        '3': 'ثلاجة شامية 80 سنتيمتر رول بود',
+                        '4': 'ثلاجة شامية 65 سبور رول بوند',
+                        '5': 'ثلاجة شامية 65 سنتيمتر رفين',
+                        '6': 'ثلاجة شامية 65 سبور',
+                        '7': 'ثلاجة شامية 70 سنتيمتر سبور',
+                        '11': 'فريزر شامية 140 سنتيمتر نحاس',
+                        '12': 'فريزر شامية 110 سنتيمتر نحاس'
+                    };
+                    const productName = productId ? productDetails[productId] || 'ثلاجة شامية' : 'ثلاجة شامية';
+
+                    const message = `طلب شراء ثلاجة شامية%0A%0A` +
+                        `الاسم: ${name}%0A` +
+                        `الهاتف: ${phone}%0A` +
+                        `المحافظة: ${city}%0A` +
+                        `المنطقة: ${district}%0A` +
+                        `العنوان: ${address}%0A` +
+                        `المنتج: ${productName}%0A` +
+                        `الموقع: ${lat && lng ? `https://maps.google.com/?q=${lat},${lng}` : 'غير محدد'}%0A` +
+                        `ملاحظات: ${notes || 'لا توجد'}%0A` +
+                        `التاريخ: ${new Date().toLocaleDateString('ar-SY')}%0A` +
+                        `الوقت: ${new Date().toLocaleTimeString('ar-SY')}%0A%0A` +
+                        `هذا الطلب تم إرساله من موقع شامية للثلاجات`;
+
+                    const whatsappUrl = `https://wa.me/+963936604658?text=${message}`;
+
+                    // Open WhatsApp
+                    window.open(whatsappUrl, '_blank');
+
+                    // Show success message
+                    const successMessage = document.getElementById('successMessage');
+                    if (successMessage && orderForm) {
+                        successMessage.style.display = 'block';
+                        orderForm.style.display = 'none';
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>
